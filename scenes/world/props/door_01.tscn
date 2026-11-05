@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dayxqv7wxe2k2"]
+
+[ext_resource type="Script" uid="uid://d2ui36jvb1m0s" path="res://scenes/world/props/door.gd" id="1_jbrw6"]
+
+[sub_resource type="Animation" id="Animation_hc588"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jbrw6"]
+resource_name = "close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 5.911254, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0b7do"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 5.911254, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0b7do"]
+_data = {
+&"RESET": SubResource("Animation_hc588"),
+&"close": SubResource("Animation_jbrw6"),
+&"open": SubResource("Animation_0b7do")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vk7gn"]
+size = Vector3(0.178, 5.203, 5.581)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vk7gn"]
+size = Vector3(0.178, 5.203, 5.581)
+
+[node name="Door" type="Node3D" unique_id=642433192]
+script = ExtResource("1_jbrw6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=309585922]
+libraries/ = SubResource("AnimationLibrary_0b7do")
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1818935851]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Visuals" unique_id=1296169539]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/StaticBody3D" unique_id=260300621]
+shape = SubResource("BoxShape3D_vk7gn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visuals" unique_id=229627567]
+mesh = SubResource("BoxMesh_vk7gn")

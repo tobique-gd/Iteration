@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://b3u5valcbmu6o"]
+
+[ext_resource type="Script" uid="uid://eep75r46axh6" path="res://scenes/entities/player/player_entity.gd" id="1_t1boa"]
+[ext_resource type="Shader" uid="uid://v0iil48umpr5" path="res://assets/shaders/character/default_toon.gdshader" id="2_4squj"]
+[ext_resource type="Shader" uid="uid://bd76ejfu5nb76" path="res://scenes/entities/player/progress_fill.gdshader" id="2_x0dmc"]
+[ext_resource type="PackedScene" uid="uid://d4jqw8n3iu0ku" path="res://assets/models/entities/character/character.gltf" id="4_4squj"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1boa"]
+radius = 0.3
+height = 1.5513672
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb3hh"]
+shader = ExtResource("2_x0dmc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8kuj"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.72156864, 0.7372549, 0.70980394, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a34ew"]
+shading_mode = 0
+albedo_color = Color(0.06262199, 0.06262199, 0.06262196, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4squj"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.65882355, 0.6745098, 0.6509804, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a34ew"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.5411765, 0.56078434, 0.53333336, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hfl6f"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.7372549, 0.32156864, 0.2784314, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4squj"]
+albedo_color = Color(0.72, 0.24480003, 0.08640001, 1)
+emission_enabled = true
+emission = Color(0.74, 0.12728, 0.05919999, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gqu77"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.5411765, 0.56078434, 0.53333336, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_06yjs"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.18431373, 0.16470589, 0.14901961, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ur24a"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.4, 0.3882353, 0.33333334, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1yh0"]
+render_priority = 0
+shader = ExtResource("2_4squj")
+shader_parameter/albedo_color = Color(0.4627451, 0.45882353, 0.43529412, 1)
+shader_parameter/use_stepped = true
+shader_parameter/steps = 1.0
+shader_parameter/step_smoothness = 0.0
+shader_parameter/shadow_tint = Color(0, 0, 0, 1)
+shader_parameter/shadow_tint_amount = 0.4
+shader_parameter/specular = 0.0
+shader_parameter/normal_strength = 0.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3ekjx"]
+animation = &"a_run"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pb3hh"]
+animation = &"a_walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gtfem"]
+animation = &"a_fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x0dmc"]
+animation = &"a_idle"
+
+[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_pb3hh"]
+xfade_time = 0.3
+input_0/name = "idle"
+input_0/auto_advance = false
+input_0/break_loop_at_end = false
+input_0/reset = true
+input_1/name = "walk"
+input_1/auto_advance = false
+input_1/break_loop_at_end = false
+input_1/reset = false
+input_2/name = "run"
+input_2/auto_advance = false
+input_2/break_loop_at_end = false
+input_2/reset = false
+input_3/name = "fall"
+input_3/auto_advance = false
+input_3/break_loop_at_end = false
+input_3/reset = false
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gtfem"]
+graph_offset = Vector2(-252.24727, 105.448)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_x0dmc")
+nodes/Animation/position = Vector2(-100, 180)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_3ekjx")
+"nodes/Animation 2/position" = Vector2(-100, 360)
+nodes/current_state/node = SubResource("AnimationNodeTransition_pb3hh")
+nodes/current_state/position = Vector2(90, 230)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_pb3hh")
+"nodes/Animation 3/position" = Vector2(-100, 530)
+"nodes/Animation 4/node" = SubResource("AnimationNodeAnimation_gtfem")
+"nodes/Animation 4/position" = Vector2(-90, 700)
+node_connections = [&"output", 0, &"current_state", &"current_state", 0, &"Animation", &"current_state", 1, &"Animation 3", &"current_state", 2, &"Animation 2", &"current_state", 3, &"Animation 4"]
+
+[node name="PlayerEntity" type="CharacterBody3D" unique_id=337366621 node_paths=PackedStringArray("mesh", "cam_pivot", "spring_arm", "ground_level", "animation_tree", "stamina_ui", "cam")]
+collision_layer = 2
+script = ExtResource("1_t1boa")
+mesh = NodePath("Visuals")
+cam_pivot = NodePath("CamPivot")
+spring_arm = NodePath("CamPivot/SpringArm3D")
+ground_level = NodePath("GroundLevel")
+animation_tree = NodePath("AnimationBlending")
+stamina_ui = NodePath("UILayer/Stamina Bar")
+cam = NodePath("CamPivot/SpringArm3D/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1470451182]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0243163, 0)
+shape = SubResource("CapsuleShape3D_t1boa")
+
+[node name="GroundLevel" type="RayCast3D" parent="." unique_id=244996174]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24901155, 0)
+target_position = Vector3(0, -0.35, 0)
+hit_from_inside = true
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=1786703193]
+
+[node name="Stamina Bar" type="ColorRect" parent="UILayer" unique_id=407940052]
+material = SubResource("ShaderMaterial_pb3hh")
+instance_shader_parameters/progress = 1.0
+offset_left = 1081.0
+offset_top = 429.00006
+offset_right = 1121.0
+offset_bottom = 469.00006
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+
+[node name="CamPivot" type="Node3D" parent="." unique_id=1614067786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 0)
+top_level = true
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot" unique_id=42474552]
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D" unique_id=765529208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4413284, 0)
+
+[node name="Visuals" parent="." unique_id=2129848831 instance=ExtResource("4_4squj")]
+
+[node name="Skeleton3D" parent="Visuals/metarig" parent_id_path=PackedInt32Array(2129848831, 1441453053) index="0" unique_id=868100890]
+bones/0/position = Vector3(1.0362595e-08, 0.79427916, 0.02692932)
+bones/0/rotation = Quaternion(-9.85972e-09, 0.9953529, -0.09629411, -2.2241126e-07)
+bones/1/rotation = Quaternion(-0.04955184, -1.412602e-08, -5.2978e-09, 0.99877155)
+bones/2/rotation = Quaternion(-0.084171966, -2.3115808e-07, -2.6224554e-05, 0.9964513)
+bones/3/rotation = Quaternion(0.017118711, 0.00044677767, -0.0003498452, 0.9998533)
+bones/5/rotation = Quaternion(0.018255334, -0.05171181, 0.006434002, 0.9984745)
+bones/6/rotation = Quaternion(-0.06713453, -1.9511901e-08, -6.7304424e-09, 0.997744)
+bones/7/rotation = Quaternion(0.5206698, 0.5188717, 0.47711718, -0.48169932)
+bones/13/rotation = Quaternion(-0.61135745, -0.3340483, -0.3664246, 0.6167552)
+bones/14/rotation = Quaternion(-0.2793212, 0.6860927, -0.53067386, 0.4118759)
+bones/15/rotation = Quaternion(0.14793222, 0.03503283, -0.06970088, 0.98591614)
+bones/16/rotation = Quaternion(-0.04621857, -0.17173147, 0.029112356, 0.98362833)
+bones/17/rotation = Quaternion(-0.060035054, -0.06625534, -0.296649, 0.9507921)
+bones/18/rotation = Quaternion(-0.023314573, 0.0034423326, -0.024443539, 0.99942344)
+bones/19/rotation = Quaternion(0.3242073, 0.023028545, -0.24425353, 0.9136189)
+bones/20/rotation = Quaternion(-0.0285489, 0.027235039, 0.07998158, 0.99601525)
+bones/21/rotation = Quaternion(-0.60882217, 0.3390521, 0.36254758, 0.6188203)
+bones/22/rotation = Quaternion(-0.2763855, -0.69167995, 0.52705294, 0.40915167)
+bones/23/rotation = Quaternion(0.17000702, -0.04742809, 0.048020713, 0.9831288)
+bones/24/rotation = Quaternion(-0.04621855, 0.17173135, -0.029112373, 0.98362833)
+bones/25/rotation = Quaternion(-0.051558133, 0.025141709, 0.19325618, 0.9794702)
+bones/26/rotation = Quaternion(0.0019473819, -0.027341817, -0.0061077112, 0.99960566)
+bones/27/rotation = Quaternion(0.3242073, -0.023028478, 0.24425352, 0.9136189)
+bones/28/rotation = Quaternion(-0.028548902, -0.027234975, -0.07998167, 0.99601525)
+bones/33/rotation = Quaternion(0.9952555, -0.009138507, 0.0016695051, 0.09685198)
+bones/34/rotation = Quaternion(0.005259658, -0.0012552176, -0.0048140287, 0.9999739)
+bones/35/rotation = Quaternion(-0.38888288, 0.0013127492, -0.0036005445, 0.92127925)
+bones/38/rotation = Quaternion(0.9952555, 0.009138474, -0.0016694225, 0.096852005)
+bones/39/rotation = Quaternion(0.005259655, 0.0012553501, 0.0048140073, 0.9999739)
+bones/40/rotation = Quaternion(-0.3888829, -0.0013128358, 0.003600491, 0.92127925)
+bones/41/rotation = Quaternion(0.00024874194, 0.9568799, -0.2904826, 0.000819544)
+bones/42/rotation = Quaternion(-0.6535969, 0.65405804, -0.26983553, -0.2687156)
+
+[node name="Character" parent="Visuals/metarig/Skeleton3D" index="0" unique_id=1418939275]
+surface_material_override/0 = SubResource("ShaderMaterial_b8kuj")
+surface_material_override/1 = SubResource("StandardMaterial3D_a34ew")
+surface_material_override/2 = SubResource("ShaderMaterial_4squj")
+surface_material_override/3 = SubResource("ShaderMaterial_a34ew")
+surface_material_override/4 = SubResource("ShaderMaterial_hfl6f")
+surface_material_override/5 = SubResource("StandardMaterial3D_4squj")
+surface_material_override/6 = SubResource("ShaderMaterial_gqu77")
+surface_material_override/7 = SubResource("ShaderMaterial_06yjs")
+surface_material_override/8 = SubResource("ShaderMaterial_ur24a")
+surface_material_override/9 = SubResource("ShaderMaterial_t1yh0")
+
+[node name="AnimationPlayer" parent="Visuals" index="1" unique_id=1926906096]
+autoplay = &"a_idle"
+
+[node name="AnimationBlending" type="AnimationTree" parent="." unique_id=1557948382]
+root_node = NodePath("../Visuals")
+tree_root = SubResource("AnimationNodeBlendTree_gtfem")
+anim_player = NodePath("../Visuals/AnimationPlayer")
+parameters/current_state/current_state = "idle"
+parameters/current_state/transition_request = ""
+parameters/current_state/current_index = 0
+
+[editable path="Visuals"]

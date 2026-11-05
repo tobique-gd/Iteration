@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://l4oj16gupt4m"]
+
+[ext_resource type="PackedScene" uid="uid://b3u5valcbmu6o" path="res://scenes/entities/player/player_entity.tscn" id="1_w4gjm"]
+[ext_resource type="PackedScene" uid="uid://dflsoybt72huy" path="res://scenes/world/props/pressure_pad.tscn" id="3_t2gda"]
+[ext_resource type="PackedScene" uid="uid://dayxqv7wxe2k2" path="res://scenes/world/props/door_01.tscn" id="4_gdlih"]
+[ext_resource type="Script" uid="uid://ca6bulouspoys" path="res://scripts/mechanisms/mechanism_controller.gd" id="5_taxee"]
+
+[sub_resource type="Environment" id="Environment_gdlih"]
+background_mode = 1
+background_color = Color(0.52572864, 0.5418525, 0.57919157, 1)
+background_energy_multiplier = 0.4
+tonemap_white = 2.0
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdlih"]
+albedo_color = Color(0.78775924, 0.78775924, 0.78775924, 1)
+
+[node name="TestWorld" type="Node3D" unique_id=1715665241]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=732768130]
+environment = SubResource("Environment_gdlih")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1828893676]
+transform = Transform3D(-0.8660255, -0.31787756, 0.3859456, -0.008202642, 0.78081954, 0.624703, -0.49993277, 0.53784275, -0.678817, 0, 3.974901, 0)
+light_color = Color(1, 0.94133335, 0.89, 1)
+light_energy = 0.45
+shadow_enabled = true
+directional_shadow_split_1 = 0.05
+directional_shadow_split_2 = 0.1
+directional_shadow_split_3 = 0.25
+directional_shadow_blend_splits = true
+directional_shadow_max_distance = 50.0
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1086881647]
+use_collision = true
+collision_mask = 3
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1493068125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.486328, -3.1315918)
+size = Vector3(7.788086, 9.292969, 21.92041)
+material = SubResource("StandardMaterial3D_gdlih")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1602340589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9498558, -3.9176435, -20.37469)
+size = Vector3(7.788086, 9.682129, 4.8304443)
+material = SubResource("StandardMaterial3D_gdlih")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1312897524]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 9.053565, -2.6238391, -27.919378)
+size = Vector3(7.788086, 9.682129, 8.522766)
+material = SubResource("StandardMaterial3D_gdlih")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D" unique_id=935370270]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 3.736493, -6.808291)
+size = Vector3(7.788086, 0.3203125, 7.7001953)
+material = SubResource("StandardMaterial3D_gdlih")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D" unique_id=234702425]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 2.7088766, -6.808291)
+operation = 2
+size = Vector3(4.968506, 0.74780273, 5.078125)
+material = SubResource("StandardMaterial3D_gdlih")
+
+[node name="PlayerEntity" parent="." unique_id=337366621 instance=ExtResource("1_w4gjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20411181, 4.2873354)
+
+[node name="Puzzle_01" type="Node3D" parent="." unique_id=31733488]
+
+[node name="Door" parent="Puzzle_01" unique_id=642433192 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("4_gdlih")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 2.727382, -6.7948785)
+mechanism_controller = NodePath("../MechanismController")
+
+[node name="PressurePad" parent="Puzzle_01" unique_id=1177825712 instance=ExtResource("3_t2gda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0767305, 0.20401853, -1.8963333)
+
+[node name="PressurePad2" parent="Puzzle_01" unique_id=536558039 instance=ExtResource("3_t2gda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.094704, 0.20401853, -9.884366)
+
+[node name="MechanismController" type="Node" parent="Puzzle_01" unique_id=1652727578 node_paths=PackedStringArray("inputs")]
+script = ExtResource("5_taxee")
+inputs = [NodePath("../PressurePad"), NodePath("../PressurePad2")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=655847633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.131142, 3.3658447)
+light_color = Color(1, 0.29411766, 1, 1)
