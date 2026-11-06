@@ -85,4 +85,4 @@ metadata/_custom_type_script = "uid://ca6bulouspoys"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=655847633]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.131142, 3.3658447)
-light_color = Color(1, 0.29411766, 1, 1)
+light_color = Color(0, 0.77112454, 0.6103127, 1)
