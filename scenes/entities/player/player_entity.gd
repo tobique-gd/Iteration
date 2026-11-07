@@ -5,9 +5,16 @@ const WALK_SPEED: float = 2.5
 const RUN_SPEED: float = 6.5
 const MAX_STAMINA: float = 150.0
 
+enum States {
+	PLAY,
+	CUTSCENE
+}
+
+var STATE = States.PLAY
+
 @export_group("Movement")
 @export var snap_distance: float = 0.4
-@export var fall_anim_delay: float = 0.05
+@export var fall_anim_delay: float = 0.02
 @export var air_turn_rate: float = 2.5
 
 @export var ground_acceleration: float = 70.0
@@ -39,6 +46,8 @@ var stamina: float = MAX_STAMINA
 @export var animation_tree: AnimationTree
 @export var stamina_ui: Control
 @export var cam: Camera3D
+@export var interact_box: Area3D
+@export var cutscene_camera_intro: Camera3D
 
 @export_group("Rotation")
 @export var rotation_speed: float = 16.0
@@ -55,7 +64,7 @@ var stamina: float = MAX_STAMINA
 @export var stamina_regen_rate: float = 10.0
 
 @export_group("Stamina UI")
-@export var stamina_idle_delay: float = 2.0
+@export var stamina_idle_delay: float = 4.0
 @export var stamina_fade_duration: float = 0.6
 
 var stamina_last_value: float = MAX_STAMINA
@@ -86,27 +95,30 @@ func update_stamina_visibility(delta: float) -> void:
 	if not is_instance_valid(stamina_ui):
 		return
 
-	if not is_equal_approx(stamina, stamina_last_value):
-		stamina_last_value = stamina
+	var draining := stamina < stamina_last_value
+
+	if draining:
 		stamina_idle_timer = 0.0
 
 		if stamina_fade_tween and stamina_fade_tween.is_running():
 			stamina_fade_tween.kill()
 
 		stamina_ui.modulate.a = 1.0
-		return
 
-	stamina_idle_timer += delta
+	else:
+		stamina_idle_timer += delta
 
-	if stamina_idle_timer >= stamina_idle_delay:
-		if stamina_fade_tween == null or not stamina_fade_tween.is_running():
-			stamina_fade_tween = create_tween()
-			stamina_fade_tween.tween_property(
-				stamina_ui,
-				"modulate:a",
-				0.0,
-				stamina_fade_duration
-			)
+		if stamina_idle_timer >= stamina_idle_delay:
+			if stamina_fade_tween == null or not stamina_fade_tween.is_running():
+				stamina_fade_tween = create_tween()
+				stamina_fade_tween.tween_property(
+					stamina_ui,
+					"modulate:a",
+					0.0,
+					stamina_fade_duration
+				)
+
+	stamina_last_value = stamina
 
 func update_sprint() -> void:
 	if is_echo():
@@ -126,6 +138,9 @@ func is_echo() -> bool:
 	return false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if STATE != States.PLAY:
+		return
+	
 	if is_echo():
 		return
 
@@ -152,6 +167,31 @@ func update_stamina(delta: float) -> void:
 	
 	stamina_ui.set_instance_shader_parameter("progress", stamina / MAX_STAMINA)
 
+func finish_intro() -> void:
+	STATE = States.CUTSCENE
+	set_animation("idle")
+
+	cam_pivot.global_position = global_position + Vector3.UP * 1.65
+
+	var target_transform := cam.global_transform
+
+	var tween := create_tween()
+
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(
+		cutscene_camera_intro,
+		"global_transform",
+		target_transform,
+		1.0
+	)
+
+	await tween.finished
+
+	cam.make_current()
+
+	exit_cutscene()
 
 func handle_recording_input() -> void:
 	if is_echo():
@@ -216,10 +256,40 @@ func _process(delta: float) -> void:
 	stamina_ui.global_position = lerp(stamina_ui.global_position, target_pos, 3.0 * delta)
 	stamina_ui.show()
 
+func handle_interact():
+	if get_interact_input():
+		for area in interact_box.get_overlapping_areas():
+			if not area.has_method("interact"):
+				return
+			
+			area.interact()
 
 
+func enter_cutscene():
+	stamina_fade_tween = create_tween()
+	stamina_fade_tween.tween_property(
+		stamina_ui,
+		"modulate:a",
+		0.0,
+		stamina_fade_duration
+	)
+	
+	STATE = States.CUTSCENE
+
+func trigger_intro():
+	set_animation("intro_cutscene")
+
+
+
+func exit_cutscene():
+	STATE = States.PLAY
 
 func _physics_process(delta: float) -> void:
+	if STATE == States.CUTSCENE:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+	
 	update_timers(delta)
 	update_sprint()
 
@@ -230,6 +300,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	update_grounded(delta)
+	
 
 	if grounded:
 		airtime = 0.0
@@ -238,14 +309,20 @@ func _physics_process(delta: float) -> void:
 
 	update_last_direction()
 	update_mesh_rotation(delta)
+	handle_interact()
 
 	if not is_echo():
-		update_stamina_visibility(delta)
+		
 		update_stamina(delta)
+		update_stamina_visibility(delta)
+		
 		update_camera_position(delta)
 		apply_controller_look(delta)
 		handle_recording_input()
 		update_animation()
+
+func get_interact_input():
+	return Input.is_action_just_pressed("interact")
 
 func handle_controller_look(event: InputEvent) -> void:
 	if event is InputEventJoypadMotion:
@@ -306,7 +383,7 @@ func update_grounded(delta: float) -> void:
 		var ground_y := ground_level.get_collision_point().y
 		var height := global_position.y - ground_y
 		if height <= snap_distance:
-			global_position.y = lerp(global_position.y, ground_y, 5.0 * delta)
+			global_position.y = lerp(global_position.y, ground_y, 48.0 * delta)
 			velocity.y = 0.0
 			grounded = true
 			return

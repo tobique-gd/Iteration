@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://k0v7xslrkjdx"]
+
+[ext_resource type="Texture2D" uid="uid://qrspjr7k67dv" path="res://assets/models/world/level_intro/rust_coarse_01_diff_1k.jpg" id="1_mv16x"]
+[ext_resource type="Texture2D" uid="uid://dygcla2tigm20" path="res://assets/models/world/level_intro/rust_coarse_01_rough_1k.jpg" id="2_rbtxx"]
+[ext_resource type="Texture2D" uid="uid://m18fa36qe5d6" path="res://assets/models/world/level_intro/rust_coarse_01_nor_gl_1k.jpg" id="3_ijat3"]
+
+[resource]
+resource_name = "Rust"
+cull_mode = 2
+albedo_texture = ExtResource("1_mv16x")
+metallic_texture = ExtResource("2_rbtxx")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_rbtxx")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_ijat3")

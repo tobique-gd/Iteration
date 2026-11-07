@@ -6,13 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://deh5tnesrex7c" path="res://assets/images/ITERATION_logo_alt_ver.png" id="3_fvlue"]
 [ext_resource type="Script" uid="uid://buxltys5vruqf" path="res://scenes/menu/main_menu/custom_look_button.gd" id="4_ww8d4"]
 [ext_resource type="Texture2D" uid="uid://duj75vdewdhkc" path="res://assets/images/ITERATION_small_logo.png" id="6_wd51l"]
+[ext_resource type="FontFile" uid="uid://demf3eyx4f7nb" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskBold.ttf" id="7_3tda0"]
 
 [sub_resource type="Animation" id="Animation_ww8d4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Logo:modulate")
+tracks/0/path = NodePath("MenuVisibilityWrapper/Menu/Logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +25,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/MarginContainer:modulate")
+tracks/1/path = NodePath("MenuVisibilityWrapper/Menu/MarginContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,7 +85,7 @@ tracks/5/keys = {
 tracks/6/type = "bezier"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Menu/Logo:position:y")
+tracks/6/path = NodePath("MenuVisibilityWrapper/Menu/Logo:position:y")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -104,15 +105,27 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dk276"]
 resource_name = "open_game"
 length = 8.5
-step = 0.5
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/Logo:modulate")
+tracks/0/path = NodePath("MenuVisibilityWrapper/Menu/Logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -124,7 +137,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/MarginContainer:modulate")
+tracks/1/path = NodePath("MenuVisibilityWrapper/Menu/MarginContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -184,7 +197,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Menu/Logo:position")
+tracks/6/path = NodePath("MenuVisibilityWrapper/Menu/Logo:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -193,15 +206,27 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(101.48572, -46)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(7.5, 8.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wd51l"]
 resource_name = "start_game"
 length = 4.0
-step = 0.5
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Menu/MarginContainer:modulate")
+tracks/0/path = NodePath("MenuVisibilityWrapper/Menu/MarginContainer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -213,7 +238,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Menu/Logo:position:y")
+tracks/1/path = NodePath("MenuVisibilityWrapper/Menu/Logo:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -224,7 +249,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Menu/Logo:modulate")
+tracks/2/path = NodePath("MenuVisibilityWrapper/Menu/Logo:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -259,15 +284,58 @@ tracks/4/keys = {
 "method": &"start_loading_game"
 }]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3tda0"]
+resource_name = "switch_menu"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MenuVisibilityWrapper:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switch_menu"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww8d4"]
 _data = {
 &"RESET": SubResource("Animation_ww8d4"),
 &"open_game": SubResource("Animation_dk276"),
-&"start_game": SubResource("Animation_wd51l")
+&"start_game": SubResource("Animation_wd51l"),
+&"switch_menu": SubResource("Animation_3tda0")
 }
 
-[node name="MainMenu" type="Control" unique_id=1401174648]
+[node name="MainMenu" type="Control" unique_id=1401174648 node_paths=PackedStringArray("animation_player", "menu", "credits")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,6 +344,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_r72xf")
 script = ExtResource("2_dk276")
+animation_player = NodePath("AnimationPlayer")
+menu = NodePath("MenuVisibilityWrapper/Menu")
+credits = NodePath("MenuVisibilityWrapper/Credits")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1321620419]
 layout_mode = 1
@@ -284,9 +355,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.9, 0.9, 0.9, 1)
+color = Color(0.98039216, 0.98039216, 0.98039216, 1)
 
-[node name="Menu" type="Control" parent="." unique_id=103512829]
+[node name="MenuVisibilityWrapper" type="Control" parent="." unique_id=1536465318]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Menu" type="Control" parent="MenuVisibilityWrapper" unique_id=103512829]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -294,7 +374,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Menu" unique_id=885121952]
+[node name="MarginContainer" type="MarginContainer" parent="MenuVisibilityWrapper/Menu" unique_id=885121952]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 4
@@ -307,55 +387,55 @@ grow_vertical = 2
 theme_override_constants/margin_left = 128
 theme_override_constants/margin_top = 236
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer" unique_id=1048220865]
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuVisibilityWrapper/Menu/MarginContainer" unique_id=1048220865]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="MenuButtonContainer" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer" unique_id=1671716740]
+[node name="MenuButtonContainer" type="MarginContainer" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer" unique_id=1671716740]
 layout_mode = 2
 script = ExtResource("2_fvlue")
 
-[node name="Start" type="Button" parent="Menu/MarginContainer/VBoxContainer/MenuButtonContainer" unique_id=1935235133]
+[node name="Start" type="Button" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer" unique_id=1935235133]
 layout_mode = 2
 text = "START"
 alignment = 0
 script = ExtResource("4_ww8d4")
 
-[node name="MenuButtonContainer4" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer" unique_id=1262980086]
+[node name="MenuButtonContainer4" type="MarginContainer" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer" unique_id=1262980086]
 layout_mode = 2
 script = ExtResource("2_fvlue")
 
-[node name="Options" type="Button" parent="Menu/MarginContainer/VBoxContainer/MenuButtonContainer4" unique_id=1509887415]
+[node name="Options" type="Button" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer4" unique_id=1509887415]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.058420815, 0.058420524, 0.058420584, 1)
 text = "OPTIONS"
 alignment = 0
 script = ExtResource("4_ww8d4")
 
-[node name="MenuButtonContainer3" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer" unique_id=1658523139]
+[node name="MenuButtonContainer3" type="MarginContainer" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer" unique_id=1658523139]
 layout_mode = 2
 script = ExtResource("2_fvlue")
 
-[node name="Credits" type="Button" parent="Menu/MarginContainer/VBoxContainer/MenuButtonContainer3" unique_id=657939809]
+[node name="Credits" type="Button" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer3" unique_id=657939809]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.058420815, 0.058420524, 0.058420584, 1)
 text = "CREDITS"
 alignment = 0
 script = ExtResource("4_ww8d4")
 
-[node name="MenuButtonContainer2" type="MarginContainer" parent="Menu/MarginContainer/VBoxContainer" unique_id=1896822087]
+[node name="MenuButtonContainer2" type="MarginContainer" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer" unique_id=1896822087]
 layout_mode = 2
 script = ExtResource("2_fvlue")
 
-[node name="Exit" type="Button" parent="Menu/MarginContainer/VBoxContainer/MenuButtonContainer2" unique_id=1883450746]
+[node name="Exit" type="Button" parent="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer2" unique_id=1883450746]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.058420815, 0.058420524, 0.058420584, 1)
 text = "EXIT"
 alignment = 0
 script = ExtResource("4_ww8d4")
 
-[node name="Logo" type="TextureRect" parent="Menu" unique_id=1493532914]
+[node name="Logo" type="TextureRect" parent="MenuVisibilityWrapper/Menu" unique_id=1493532914]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -373,6 +453,112 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("3_fvlue")
 expand_mode = 1
+
+[node name="Credits" type="Control" parent="MenuVisibilityWrapper" unique_id=346197432]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuVisibilityWrapper/Credits" unique_id=276980257]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuVisibilityWrapper/Credits/MarginContainer" unique_id=213820529]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuVisibilityWrapper/Credits/MarginContainer/VBoxContainer" unique_id=966275088]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.033853278, 0.033853278, 0.033853274, 1)
+theme_override_fonts/font = ExtResource("7_3tda0")
+text = "CREDITS"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MenuVisibilityWrapper/Credits/MarginContainer/VBoxContainer" unique_id=1338423289]
+layout_mode = 2
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="Label" type="Label" parent="MenuVisibilityWrapper/Credits/MarginContainer/VBoxContainer/ScrollContainer" unique_id=990784588]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.0316549, 0.0316549, 0.031654898, 1)
+theme_override_font_sizes/font_size = 24
+text = "This game uses Godot Engine, available under the following license:
+
+Copyright (c) 2014-present Godot Engine contributors.
+Copyright (c) 2007-2014 Juan Linietsky, Ariel Manzur.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the \"Software\"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE."
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuVisibilityWrapper" unique_id=1161889460]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 84
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuVisibilityWrapper/MarginContainer" unique_id=1821770836]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="Select" type="Button" parent="MenuVisibilityWrapper/MarginContainer/HBoxContainer" unique_id=1355425728]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+theme_override_colors/font_focus_color = Color(0.9231732, 0.9231732, 0.9231732, 1)
+theme_override_colors/font_pressed_color = Color(0.3106173, 0.31061706, 0.3106171, 1)
+theme_override_colors/font_hover_color = Color(0.44097933, 0.44097927, 0.44097927, 1)
+theme_override_font_sizes/font_size = 36
+text = "Select"
+flat = true
+
+[node name="Back" type="Button" parent="MenuVisibilityWrapper/MarginContainer/HBoxContainer" unique_id=1676787906]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+theme_override_colors/font_focus_color = Color(0.9231732, 0.9231732, 0.9231732, 1)
+theme_override_colors/font_pressed_color = Color(0.3106173, 0.31061706, 0.3106171, 1)
+theme_override_colors/font_hover_color = Color(0.44097933, 0.44097927, 0.44097927, 1)
+theme_override_font_sizes/font_size = 36
+text = "Back"
+flat = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1855826783]
 libraries/ = SubResource("AnimationLibrary_ww8d4")
@@ -424,5 +610,7 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_wd51l")
 expand_mode = 1
 
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/MenuButtonContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Menu/MarginContainer/VBoxContainer/MenuButtonContainer2/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer3/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer2/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]

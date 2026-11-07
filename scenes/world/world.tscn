@@ -1,0 +1,448 @@
+[gd_scene format=3 uid="uid://6i2gxcwg4p5j"]
+
+[ext_resource type="Shader" uid="uid://gcrsdyqjn0da" path="res://scenes/world/sky.gdshader" id="1_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://b3u5valcbmu6o" path="res://scenes/entities/player/player_entity.tscn" id="1_v5dby"]
+[ext_resource type="Shader" uid="uid://d1acg20addguq" path="res://assets/shaders/wind/cloth_wind.gdshader" id="4_6m72w"]
+[ext_resource type="PackedScene" uid="uid://bo1mx5yxxfmcm" path="res://assets/models/world/level_intro/intro.gltf" id="6_t5ptc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6m72w"]
+shader = ExtResource("1_1fp7r")
+shader_parameter/sky_top = Color(0.5488, 0.5530933, 0.56, 1)
+shader_parameter/sky_horizon = Color(0.55, 0.55, 0.55, 1)
+shader_parameter/cloud_light = Color(0.59, 0.59, 0.59, 1)
+shader_parameter/cloud_dark = Color(0.5589535, 0.5589535, 0.5589535, 1)
+shader_parameter/cloud_scale = 6.0
+shader_parameter/coverage = 0.48400002299
+shader_parameter/softness = 0.06400000234148
+shader_parameter/warp_strength = 0.400000019
+shader_parameter/horizon_fade = 0.2
+shader_parameter/bands = 1
+shader_parameter/band_softness = 0.08
+shader_parameter/light_dir = Vector2(2.19, 0.4)
+shader_parameter/shade_contrast = 8.00000035625
+shader_parameter/wind_speed = 0.10000000475
+shader_parameter/wind_dir = Vector2(1, 0.3)
+
+[sub_resource type="Sky" id="Sky_v5dby"]
+sky_material = SubResource("ShaderMaterial_6m72w")
+
+[sub_resource type="Environment" id="Environment_gb53w"]
+background_mode = 2
+background_color = Color(0.8167454, 0.828332, 0.83530474, 1)
+sky = SubResource("Sky_v5dby")
+tonemap_exposure = 0.72
+ssao_radius = 8.52
+ssao_intensity = 10.12
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.4
+fog_enabled = true
+fog_light_color = Color(0.1944, 0.23316, 0.24, 1)
+fog_light_energy = 1.32
+fog_density = 0.0165
+fog_aerial_perspective = 0.5
+fog_sky_affect = 0.403
+adjustment_brightness = 0.84
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v5dby"]
+render_priority = 0
+shader = ExtResource("4_6m72w")
+shader_parameter/wind_strength = 0.35
+shader_parameter/wind_speed = 0.33
+shader_parameter/twist_strength = 0.04
+shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5ptc"]
+render_priority = 0
+shader = ExtResource("4_6m72w")
+shader_parameter/wind_strength = 0.1
+shader_parameter/wind_speed = 0.33
+shader_parameter/twist_strength = 0.0
+shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq33v"]
+render_priority = 0
+shader = ExtResource("4_6m72w")
+shader_parameter/wind_strength = 0.2
+shader_parameter/wind_speed = 0.33
+shader_parameter/twist_strength = 0.0
+shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
+
+[sub_resource type="Animation" id="Animation_1fp7r"]
+resource_name = "Intro"
+length = 26.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.578, 12.258)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D3:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PlayerEntity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 13.5, 24),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"enter_cutscene"
+}, {
+"args": [],
+"method": &"trigger_intro"
+}, {
+"args": [],
+"method": &"finish_intro"
+}]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:rotation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0.18516162, 0, 0, 6.5, -0.0039224923, 0, -4, 0.0023731124, 0, 0),
+"times": PackedFloat32Array(14, 26)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.513, -0.3, 0, 6.594307, 0.0073671937, 1.663, -4, -0.012197971, 0, 0),
+"times": PackedFloat32Array(14, 26)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Camera3D:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(23.403, -0.25, 0, 0.96, 0, 18.233, -2.5, -0.010314941, 0, 0),
+"times": PackedFloat32Array(14, 26)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera3D4:current")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(14),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Camera3D4:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(14, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.8575195, 1.597086, 18.317606), Vector3(1.8575194, 1.597086, 14.78216)]
+}
+
+[sub_resource type="Animation" id="Animation_6m72w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.578, 12.258)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Camera3D3:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Camera3D:rotation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.30194196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.513, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Camera3D:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(23.403, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CanvasLayer/ColorRect:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Camera3D4:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Camera3D4:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.8575196, 1.597086, 20.48325)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m72w"]
+_data = {
+&"Intro": SubResource("Animation_1fp7r"),
+&"RESET": SubResource("Animation_6m72w")
+}
+
+[node name="World" type="Node3D" unique_id=298276808]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54281746]
+environment = SubResource("Environment_gb53w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=138114866]
+transform = Transform3D(0.1364315, -0.5545124, 0.8209156, -0.021650445, 0.8267971, 0.56208336, -0.99041283, -0.09445908, 0.100795746, 0, 3.974901, 0)
+light_color = Color(1, 0.98583335, 0.95, 1)
+light_energy = 0.65
+shadow_enabled = true
+directional_shadow_pancake_size = 50.0
+
+[node name="PlayerEntity" parent="." unique_id=337366621 node_paths=PackedStringArray("cutscene_camera_intro") instance=ExtResource("1_v5dby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
+cutscene_camera_intro = NodePath("../Camera3D")
+
+[node name="Collection" parent="." unique_id=605819155 instance=ExtResource("6_t5ptc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Plane" parent="Collection" index="11" unique_id=1661519114]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_001" parent="Collection" index="13" unique_id=795753789]
+material_override = SubResource("ShaderMaterial_v5dby")
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_002" parent="Collection" index="14" unique_id=663868038]
+surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
+
+[node name="Plane_003" parent="Collection" index="15" unique_id=789637195]
+surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
+
+[node name="Plane_004" parent="Collection" index="16" unique_id=1491412694]
+surface_material_override/0 = SubResource("ShaderMaterial_bq33v")
+
+[node name="Plane_005" parent="Collection" index="17" unique_id=99129429]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_006" parent="Collection" index="18" unique_id=211117766]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_007" parent="Collection" index="19" unique_id=883051662]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=314545714]
+transform = Transform3D(1, 0, 0, 0, 0.9547606, -0.2973748, 0, 0.2973748, 0.9547606, 0, 0.513, 23.403)
+current = true
+fov = 45.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="." unique_id=1938116626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -2.1606827)
+blend_distance = 0.5
+size = Vector3(78.40259, 44.678833, 125.445786)
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="Camera3D2" type="Camera3D" parent="." unique_id=978733880]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 5.578, 12.258)
+current = true
+fov = 46.6
+
+[node name="Cutscenes" type="AnimationPlayer" parent="." unique_id=1479005614]
+libraries/ = SubResource("AnimationLibrary_6m72w")
+autoplay = &"Intro"
+
+[node name="Camera3D3" type="Camera3D" parent="." unique_id=173657259]
+transform = Transform3D(0.66131186, -0.32411227, -0.67647445, 0, 0.90183246, -0.43208572, 0.75011104, 0.28574342, 0.5963925, 8.3, 12.7, 29.7)
+fov = 50.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=475020033]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1611011663]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.98039216, 0.98039216, 0.98039216, 1)
+
+[node name="Camera3D4" type="Camera3D" parent="." unique_id=1065481396]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8575196, 1.597086, 20.48325)
+current = true
+fov = 45.0
+
+[editable path="Collection"]

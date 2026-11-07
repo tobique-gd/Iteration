@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://7cd7q1kpo8ht"]
+
+[ext_resource type="Script" uid="uid://cmo8lahxcown0" path="res://scenes/world/props/lever.gd" id="1_iwh2e"]
+[ext_resource type="PackedScene" uid="uid://no8ujn50akao" path="res://scenes/interaction/interactable_component.tscn" id="2_2hfxs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2hfxs"]
+size = Vector3(1, 1.6142578, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2hfxs"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xk3l6"]
+
+[node name="Lever" type="Node3D" unique_id=542383835 node_paths=PackedStringArray("interactable_component")]
+script = ExtResource("1_iwh2e")
+interactable_component = NodePath("InteractableComponent")
+
+[node name="InteractableComponent" parent="." unique_id=351763631 instance=ExtResource("2_2hfxs")]
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractableComponent" unique_id=1602205314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.86411285, 0)
+shape = SubResource("BoxShape3D_2hfxs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1311475553]
+transform = Transform3D(0.43874377, 0, 0, 0, 0.28503346, 0, 0, 0, 0.87709993, 0, 0, 0)
+mesh = SubResource("BoxMesh_2hfxs")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1998066396]
+transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=1860872280]
+transform = Transform3D(0.13114598, 0, 0, 0, 1, 0, 0, 0, 0.12415148, 0, 0.5899391, 0)
+mesh = SubResource("BoxMesh_xk3l6")

@@ -10,11 +10,15 @@ height = 1.5513672
 radius = 0.3
 height = 1.8
 
-[node name="Echo" type="CharacterBody3D" unique_id=1797441509 node_paths=PackedStringArray("mesh", "ground_level")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_8jg1w"]
+size = Vector3(1, 1, 0.87213135)
+
+[node name="Echo" type="CharacterBody3D" unique_id=1797441509 node_paths=PackedStringArray("mesh", "ground_level", "interact_box")]
 collision_layer = 2
 script = ExtResource("1_8jg1w")
-mesh = NodePath("MeshInstance3D")
+mesh = NodePath("Visuals")
 ground_level = NodePath("GroundLevel")
+interact_box = NodePath("Visuals/InteractBox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=238906938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0243163, 0)
@@ -28,3 +32,13 @@ mesh = SubResource("CapsuleMesh_8jg1w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24901155, 0)
 target_position = Vector3(0, -0.35, 0)
 hit_from_inside = true
+
+[node name="Visuals" type="Node3D" parent="." unique_id=1044288730]
+
+[node name="InteractBox" type="Area3D" parent="Visuals" unique_id=624637624]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/InteractBox" unique_id=1049781616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9258277, -0.46942067)
+shape = SubResource("BoxShape3D_8jg1w")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://3ifg5p0x15"]
+
+[resource]
+resource_name = "Emm"
+cull_mode = 2
+albedo_color = Color(0.7102754, 0.76833624, 0.76262057, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.9562335, 0.9821685, 1, 1)
+emission_energy_multiplier = 0.2

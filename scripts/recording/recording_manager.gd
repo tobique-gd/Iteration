@@ -108,6 +108,7 @@ func record_frame() -> void:
 	frame.movement_direction = player.get_movement_direction()
 	frame.sprinting = player.sprinting
 	frame.jump_pressed = player.get_jump_input()
+	frame.interact_pressed = player.get_interact_input()
 
 	current_recording.add_frame(frame)
 

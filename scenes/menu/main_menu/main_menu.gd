@@ -1,11 +1,30 @@
 extends Control
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var animation_player: AnimationPlayer
+
 @onready var loading_icon: TextureRect = $LoadingIcon
 
-@onready var world_scene_uid: String = "uid://l4oj16gupt4m"
+@onready var world_scene_uid: String = "uid://6i2gxcwg4p5j"
+
+@export var menu: Control
+@export var credits: Control
+
+signal enter_into_game(scene)
+
+@onready var select_btn: Button = $MenuVisibilityWrapper/MarginContainer/HBoxContainer/Select
+@onready var back_btn: Button = $MenuVisibilityWrapper/MarginContainer/HBoxContainer/Back
+
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	push_menu(menu)
+
+func _reset_menu_visibility():
+	menu.visible = false
+	credits.visible = false
 
 var loading = false
+
+var menu_stack : Array[Control]
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
@@ -31,7 +50,8 @@ func _process(_delta: float) -> void:
 			await tween.finished
 			
 			var scene = ResourceLoader.load_threaded_get(world_scene_uid)
-			get_tree().change_scene_to_packed(scene)
+			enter_into_game.emit(scene)
+			
 
 func start_loading_game():
 	ResourceLoader.load_threaded_request(world_scene_uid)
@@ -52,5 +72,46 @@ func _start_smooth_rotation():
 
 	tween.tween_interval(1.0)
 
+func push_menu(_menu: Control):
+	menu_stack.append(_menu)
+
+func pop_menu():
+	menu_stack.pop_back()
+
 func _on_start_pressed() -> void:
 	animation_player.play("start_game")
+
+func switch_menu():
+	if menu_stack.size() <= 0:
+		return
+		
+	
+	if menu_stack.size() > 1:
+		back_btn.visible = true
+	else:
+		back_btn.visible = false
+	
+	_reset_menu_visibility()
+	var idx = menu_stack.size() - 1
+	
+
+		
+	menu_stack[idx].visible = true
+
+
+func _on_credits_pressed() -> void:
+	push_menu(credits)
+	play_switch_animation()
+
+func play_switch_animation():
+	if animation_player.is_playing():
+		animation_player.seek(1.0)
+	
+	animation_player.play("switch_menu")
+
+func _on_back_pressed() -> void:
+	if menu_stack.size() <= 0:
+		return
+	
+	pop_menu()
+	play_switch_animation()

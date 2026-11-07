@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://b3u5valcbmu6o" path="res://scenes/entities/player/player_entity.tscn" id="1_w4gjm"]
 [ext_resource type="PackedScene" uid="uid://dflsoybt72huy" path="res://scenes/world/props/pressure_pad.tscn" id="3_t2gda"]
 [ext_resource type="PackedScene" uid="uid://dayxqv7wxe2k2" path="res://scenes/world/props/door_01.tscn" id="4_gdlih"]
+[ext_resource type="PackedScene" uid="uid://rqr3pubswg5j" path="res://assets/models/world/blocks/test_blocks.gltf" id="5_5k033"]
 [ext_resource type="Script" uid="uid://ca6bulouspoys" path="res://scripts/mechanisms/mechanism_controller.gd" id="5_taxee"]
+[ext_resource type="PackedScene" uid="uid://7cd7q1kpo8ht" path="res://scenes/world/props/lever.tscn" id="6_5k033"]
 
 [sub_resource type="Environment" id="Environment_gdlih"]
 background_mode = 1
@@ -13,6 +15,10 @@ tonemap_white = 2.0
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 0.2
+fog_enabled = true
+fog_light_color = Color(0.50885665, 0.54417044, 0.59910434, 1)
+fog_density = 0.0305
+fog_height_density = 0.3645
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdlih"]
 albedo_color = Color(0.78775924, 0.78775924, 0.78775924, 1)
@@ -78,11 +84,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0767305, 0.20401853, -1.89
 [node name="PressurePad2" parent="Puzzle_01" unique_id=536558039 instance=ExtResource("3_t2gda")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.094704, 0.20401853, -9.884366)
 
+[node name="Lever" parent="Puzzle_01" unique_id=542383835 instance=ExtResource("6_5k033")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6309023, 0.24924922, 0)
+
 [node name="MechanismController" type="Node" parent="Puzzle_01" unique_id=1652727578 node_paths=PackedStringArray("inputs")]
 script = ExtResource("5_taxee")
-inputs = [NodePath("../PressurePad"), NodePath("../PressurePad2")]
+inputs = [NodePath("../PressurePad"), NodePath("../PressurePad2"), NodePath("../Lever")]
+minimum_inputs = 3
 metadata/_custom_type_script = "uid://ca6bulouspoys"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=655847633]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.131142, 3.3658447)
-light_color = Color(0, 0.77112454, 0.6103127, 1)
+[node name="EXPORT BLOCKS" parent="." unique_id=663036008 instance=ExtResource("5_5k033")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.978465, 0, 5.4947567)
+
+[editable path="EXPORT BLOCKS"]

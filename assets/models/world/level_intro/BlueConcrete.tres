@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bamhdlc1q4ev4"]
+
+[ext_resource type="Texture2D" uid="uid://btuyhhct36h4b" path="res://assets/models/world/level_intro/Concrete014_1K-JPG_Color.jpg" id="1_htmn2"]
+[ext_resource type="Texture2D" uid="uid://20hhdl650ah5" path="res://assets/models/world/level_intro/Concrete014_1K-JPG_Roughness.jpg" id="2_ssb6h"]
+[ext_resource type="Texture2D" uid="uid://qpelsa24scpy" path="res://assets/models/world/level_intro/Concrete014_1K-JPG_NormalGL.jpg" id="3_2mwke"]
+
+[resource]
+resource_name = "BlueConcrete"
+cull_mode = 2
+albedo_texture = ExtResource("1_htmn2")
+metallic_texture = ExtResource("2_ssb6h")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_ssb6h")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_2mwke")

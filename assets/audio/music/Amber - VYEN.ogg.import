@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://jg3oecwx2xi0"
+path="res://.godot/imported/Amber - VYEN.ogg-33fd95d33d11668e104b0e955566909d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Amber - VYEN.ogg"
+dest_files=["res://.godot/imported/Amber - VYEN.ogg-33fd95d33d11668e104b0e955566909d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

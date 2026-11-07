@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dv5syvy628fql"]
+
+[ext_resource type="Texture2D" uid="uid://bog70x277fi8h" path="res://assets/models/world/level_intro/Concrete031_1K-JPG_Color.jpg" id="1_hnd3n"]
+[ext_resource type="Texture2D" uid="uid://bpym85ivhvam7" path="res://assets/models/world/level_intro/Concrete031_1K-JPG_Roughness.jpg" id="2_qgx4t"]
+[ext_resource type="Texture2D" uid="uid://m4mht8md4fp" path="res://assets/models/world/level_intro/Concrete031_1K-JPG_NormalGL.jpg" id="3_718cy"]
+
+[resource]
+resource_name = "ConcreteTiled"
+cull_mode = 2
+albedo_texture = ExtResource("1_hnd3n")
+metallic_texture = ExtResource("2_qgx4t")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_qgx4t")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_718cy")

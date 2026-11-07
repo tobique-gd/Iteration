@@ -6,7 +6,7 @@ signal mechanism_activated
 signal mechanism_deactivated
 
 @export_group("Inputs")
-@export var inputs: Array[Node] = []
+@export var inputs: Array[Mechanism] = []
 
 @export_enum("All", "Any", "Minimum") var input_mode: int = 0
 @export_range(1, 20) var minimum_inputs: int = 2

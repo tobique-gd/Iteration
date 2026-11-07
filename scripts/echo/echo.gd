@@ -22,6 +22,7 @@ var playback_time: float = 0.0
 var recorded_direction: Vector3 = Vector3.ZERO
 var recorded_sprinting: bool = false
 var jump_event_pending: bool = false
+var interact_event_pending: bool = false
 
 
 func is_echo() -> bool:
@@ -45,6 +46,7 @@ func restart_playback() -> void:
 	recorded_direction = Vector3.ZERO
 	recorded_sprinting = false
 	jump_event_pending = false
+	interact_event_pending = false
 
 	state = State.PLAYING
 
@@ -83,11 +85,20 @@ func update_playback() -> void:
 		recorded_direction = frame.movement_direction
 		recorded_sprinting = frame.sprinting
 
+
 		if frame.jump_pressed:
 			jump_event_pending = true
+		
+		if frame.interact_pressed:
+			interact_event_pending = true
 
 		current_frame_index += 1
 
+func get_interact_input() -> bool:
+	if interact_event_pending:
+		interact_event_pending = false
+		return true
+	return false
 
 func get_movement_direction() -> Vector3:
 	return recorded_direction
@@ -114,6 +125,7 @@ func finish_playback() -> void:
 	recorded_direction = Vector3.ZERO
 	recorded_sprinting = false
 	jump_event_pending = false
+	interact_event_pending = false
 
 	playback_finished.emit(self)
 

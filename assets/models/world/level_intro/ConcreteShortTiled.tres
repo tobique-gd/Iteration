@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c63vptg0kb5ns"]
+
+[ext_resource type="Texture2D" uid="uid://dhlmv437jl40t" path="res://assets/models/world/level_intro/Concrete028_1K-JPG_Color.jpg" id="1_xo8k2"]
+[ext_resource type="Texture2D" uid="uid://d1iilsripkbu6" path="res://assets/models/world/level_intro/Concrete028_1K-JPG_Roughness.jpg" id="2_30624"]
+[ext_resource type="Texture2D" uid="uid://cgbuas1c6b43" path="res://assets/models/world/level_intro/Concrete028_1K-JPG_NormalGL.jpg" id="3_vd2vj"]
+
+[resource]
+resource_name = "ConcreteShortTiled"
+cull_mode = 2
+albedo_texture = ExtResource("1_xo8k2")
+metallic_texture = ExtResource("2_30624")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_30624")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_vd2vj")
