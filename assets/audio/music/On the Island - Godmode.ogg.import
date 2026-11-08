@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bvl5kqe8xkct8"
+path="res://.godot/imported/On the Island - Godmode.ogg-fe714ce5dfd63b6a724299243c6a59c3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/On the Island - Godmode.ogg"
+dest_files=["res://.godot/imported/On the Island - Godmode.ogg-fe714ce5dfd63b6a724299243c6a59c3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

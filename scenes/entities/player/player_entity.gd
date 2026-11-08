@@ -87,6 +87,8 @@ var sprinting: bool = false
 
 func _ready() -> void:
 	if not is_echo():
+		#if STATE == States.PLAY:
+			#cam.current = true
 		WorldManager.activate_anchor(self)
 		RecordingManager.set_player(self)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -184,7 +186,7 @@ func finish_intro() -> void:
 		cutscene_camera_intro,
 		"global_transform",
 		target_transform,
-		1.0
+		2.0
 	)
 
 	await tween.finished

@@ -11,25 +11,37 @@ config_version=5
 [application]
 
 config/name="Iteration"
-run/main_scene="uid://cfutxkaiyxnkj"
+run/main_scene="uid://d33toj1sl1nsj"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://cqsxstloc8kct"
+
 [autoload]
 
 WorldManager="*uid://bxrjf0mc3f1ye"
+SubtitleManager="*uid://cl6ke6ernjo2h"
 RecordingManager="*uid://b2q5dpvpc0y2e"
 EchoManager="*uid://d0djvr78b806e"
+AudioManager="*uid://c0i3r0g28g7hm"
+ControllerIcons="*uid://dpto7s6keenps"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/controller_icons/plugin.cfg")
 
 [input]
 

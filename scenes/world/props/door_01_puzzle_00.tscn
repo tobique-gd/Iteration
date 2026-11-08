@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b7ow43hs1yjeg"]
+
+[ext_resource type="PackedScene" uid="uid://cfc804hxv10a5" path="res://assets/models/props/puzzles/puzzle_00/door_01/door_01.glb" id="1_bgxai"]
+[ext_resource type="Script" uid="uid://1bbrcj6snawk" path="res://assets/models/props/puzzles/puzzle_00/door_01/door_01.gd" id="2_hlods"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="3_mrdxx"]
+[ext_resource type="Material" uid="uid://drigxrotncfh2" path="res://assets/materials/puzzle_emmisive.tres" id="4_6pibx"]
+
+[node name="Door_01_Puzzle_00" type="Node3D" unique_id=944798950 node_paths=PackedStringArray("animation_player", "door_pieces")]
+script = ExtResource("2_hlods")
+animation_player = NodePath("Puzzle_00_Door_01/AnimationPlayer")
+door_pieces = [NodePath("Puzzle_00_Door_01/Puzzle_00_Door_01_mesh_002"), NodePath("Puzzle_00_Door_01/Puzzle_00_Door_01_mesh_005"), NodePath("Puzzle_00_Door_01/Puzzle_00_Door_01_mesh_008"), NodePath("Puzzle_00_Door_01/Puzzle_00_Door_01_mesh_011")]
+
+[node name="Puzzle_00_Door_01" parent="." unique_id=1476356653 instance=ExtResource("1_bgxai")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Puzzle_00_Door_01_mesh_002" parent="Puzzle_00_Door_01" index="0" unique_id=1481285816]
+surface_material_override/0 = ExtResource("3_mrdxx")
+surface_material_override/1 = ExtResource("4_6pibx")
+
+[node name="Puzzle_00_Door_01_mesh_005" parent="Puzzle_00_Door_01" index="1" unique_id=1054991260]
+surface_material_override/0 = ExtResource("3_mrdxx")
+surface_material_override/1 = ExtResource("4_6pibx")
+
+[node name="Puzzle_00_Door_01_mesh_008" parent="Puzzle_00_Door_01" index="2" unique_id=1134657810]
+surface_material_override/0 = ExtResource("3_mrdxx")
+surface_material_override/1 = ExtResource("4_6pibx")
+
+[node name="Puzzle_00_Door_01_mesh_011" parent="Puzzle_00_Door_01" index="3" unique_id=711003969]
+surface_material_override/0 = ExtResource("3_mrdxx")
+surface_material_override/1 = ExtResource("4_6pibx")
+
+[editable path="Puzzle_00_Door_01"]

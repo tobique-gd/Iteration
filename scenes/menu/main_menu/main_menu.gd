@@ -26,13 +26,11 @@ var loading = false
 
 var menu_stack : Array[Control]
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		if animation_player.is_playing() and animation_player.current_animation_position < 6.0:
-			animation_player.seek(6.0)
-
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func start_menu_music():
+	AudioManager.play_music("As You Prevent Do")
 
 func _process(_delta: float) -> void:
 	if loading:

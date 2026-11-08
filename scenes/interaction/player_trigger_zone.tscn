@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bpru1gi3ee7eb"]
+
+[ext_resource type="Script" uid="uid://myn0t8qaarql" path="res://scenes/world/player_trigger_zone.gd" id="1_dqpc0"]
+
+[node name="PlayerTriggerZone" type="Area3D" unique_id=800767133]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_dqpc0")
+use_autoload = true
+arguments = ["Press [icon:jump:32] to jump.", 5.0]

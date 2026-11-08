@@ -164,7 +164,6 @@ input_4/break_loop_at_end = false
 input_4/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gtfem"]
-graph_offset = Vector2(-287.72067, 56.97027)
 nodes/output/position = Vector2(920, 180)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_x0dmc")
 nodes/Animation/position = Vector2(-100, 180)
@@ -222,11 +221,11 @@ top_level = true
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamPivot" unique_id=42474552]
 shape = SubResource("SphereShape3D_pb3hh")
-spring_length = 5.0
+spring_length = 4.0
 
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D" unique_id=765529208]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4413284, 0)
-fov = 45.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+fov = 55.0
 
 [node name="Visuals" parent="." unique_id=2129848831 instance=ExtResource("4_4squj")]
 
@@ -234,26 +233,26 @@ fov = 45.0
 bones/1/position = Vector3(3.9421444e-09, 0.79427916, 0.026929334)
 bones/1/rotation = Quaternion(-1.1482987e-09, 0.9953529, -0.0962941, -7.514707e-08)
 bones/2/rotation = Quaternion(-0.049551845, 1.4581131e-08, -3.8735735e-09, 0.99877155)
-bones/3/rotation = Quaternion(-0.08431625, -2.1547996e-07, -2.4202993e-05, 0.9964391)
-bones/4/rotation = Quaternion(0.020509431, 0.00024830812, -0.00019443191, 0.9997896)
-bones/6/rotation = Quaternion(-0.0011839215, 0.009169202, 0.018282598, 0.9997902)
+bones/3/rotation = Quaternion(-0.08746036, 1.2622343e-07, 1.985824e-05, 0.996168)
+bones/4/rotation = Quaternion(0.02475104, 8.523415e-09, 1.1247175e-09, 0.99969363)
+bones/6/rotation = Quaternion(0.016329395, -0.0029992624, 0.015155613, 0.9997474)
 bones/7/rotation = Quaternion(-0.06713453, -1.9511901e-08, -6.730441e-09, 0.997744)
 bones/8/rotation = Quaternion(0.5206699, 0.5188717, 0.4771172, -0.4816993)
 bones/11/rotation = Quaternion(0.52067, -0.51887167, -0.47711712, -0.48169935)
-bones/14/rotation = Quaternion(-0.61016244, -0.3363766, -0.36464807, 0.61772525)
-bones/15/rotation = Quaternion(-0.25517038, 0.672123, -0.5445306, 0.43200153)
-bones/16/rotation = Quaternion(0.17260824, 0.028254483, -0.07614695, 0.9816363)
+bones/14/rotation = Quaternion(-0.60809416, -0.34022924, -0.3615653, 0.61946434)
+bones/15/rotation = Quaternion(-0.29471907, 0.68794394, -0.5206473, 0.4108531)
+bones/16/rotation = Quaternion(0.18614945, 0.04492314, -0.04338391, 0.9805346)
 bones/17/rotation = Quaternion(-0.046218555, -0.17173141, 0.029112328, 0.9836284)
-bones/18/rotation = Quaternion(-0.062829405, -0.097182825, -0.38727653, 0.9146721)
-bones/19/rotation = Quaternion(-0.025424892, -0.021864468, -0.12891842, 0.99108815)
+bones/18/rotation = Quaternion(-0.054364752, -0.031378023, -0.20193757, 0.9773849)
+bones/19/rotation = Quaternion(-0.025010997, -0.00517062, -0.06612767, 0.99748427)
 bones/20/rotation = Quaternion(0.32420725, 0.023028513, -0.24425355, 0.9136189)
 bones/21/rotation = Quaternion(-0.028548852, 0.027235063, 0.07998167, 0.99601525)
-bones/22/rotation = Quaternion(-0.6088223, 0.33905208, 0.36254752, 0.61882025)
-bones/23/rotation = Quaternion(-0.29672658, -0.68998057, 0.52857614, 0.39558512)
-bones/24/rotation = Quaternion(0.16083911, -0.050682645, 0.045796145, 0.9846141)
+bones/22/rotation = Quaternion(-0.6068973, 0.34222186, 0.36021656, 0.6203256)
+bones/23/rotation = Quaternion(-0.2863816, -0.6910642, 0.52483606, 0.40615636)
+bones/24/rotation = Quaternion(0.17949747, -0.03504193, 0.06921814, 0.9806944)
 bones/25/rotation = Quaternion(-0.046218567, 0.17173137, -0.029112361, 0.9836284)
-bones/26/rotation = Quaternion(-0.08703697, 0.05126736, 0.2739784, 0.95641625)
-bones/27/rotation = Quaternion(-0.06416274, 0.034936916, 0.17198396, 0.982387)
+bones/26/rotation = Quaternion(-0.06865546, 0.042276703, 0.2320871, 0.96934766)
+bones/27/rotation = Quaternion(-0.042348877, 0.023971453, 0.11744822, 0.991886)
 bones/28/rotation = Quaternion(0.32420725, -0.0230285, 0.24425343, 0.91361904)
 bones/29/rotation = Quaternion(-0.028548827, -0.027234968, -0.07998163, 0.99601525)
 bones/34/rotation = Quaternion(0.9952554, -0.009138531, 0.0016691636, 0.09685232)

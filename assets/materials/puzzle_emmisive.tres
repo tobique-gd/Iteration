@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://drigxrotncfh2"]
+
+[ext_resource type="Shader" uid="uid://bq6nd2nhhhmnu" path="res://scenes/world/puzzle_emmisive_surfaces.gdshader" id="1_4gcwp"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4gcwp")

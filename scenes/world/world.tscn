@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://6i2gxcwg4p5j"]
 
 [ext_resource type="Shader" uid="uid://gcrsdyqjn0da" path="res://scenes/world/sky.gdshader" id="1_1fp7r"]
+[ext_resource type="Script" uid="uid://dexhmjrjcm35a" path="res://scenes/world/world.gd" id="1_bq33v"]
+[ext_resource type="Script" uid="uid://bool4h78lq4mc" path="res://scenes/world/audio_node.gd" id="1_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://b3u5valcbmu6o" path="res://scenes/entities/player/player_entity.tscn" id="1_v5dby"]
 [ext_resource type="Shader" uid="uid://d1acg20addguq" path="res://assets/shaders/wind/cloth_wind.gdshader" id="4_6m72w"]
+[ext_resource type="PackedScene" uid="uid://bpru1gi3ee7eb" path="res://scenes/interaction/player_trigger_zone.tscn" id="4_bq33v"]
 [ext_resource type="PackedScene" uid="uid://bo1mx5yxxfmcm" path="res://assets/models/world/level_intro/intro.gltf" id="6_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://dflsoybt72huy" path="res://scenes/world/props/pressure_pad.tscn" id="8_j2gmx"]
+[ext_resource type="Script" uid="uid://ca6bulouspoys" path="res://scripts/mechanisms/mechanism_controller.gd" id="9_1yooq"]
+[ext_resource type="PackedScene" uid="uid://b7ow43hs1yjeg" path="res://scenes/world/props/door_01_puzzle_00.tscn" id="14_umvgx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6m72w"]
 shader = ExtResource("1_1fp7r")
@@ -44,6 +50,428 @@ fog_aerial_perspective = 0.5
 fog_sky_affect = 0.403
 adjustment_brightness = 0.84
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bq33v"]
+size = Vector3(26.69043, 4.876953, 11.694336)
+
+[sub_resource type="Animation" id="Animation_1fp7r"]
+resource_name = "Intro"
+length = 36.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cameras/Camera3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/Camera3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.578, 12.258)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/Camera3D3:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cameras/Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 27.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Entities/PlayerEntity")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 23.5, 34),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"enter_cutscene"
+}, {
+"args": [],
+"method": &"trigger_intro"
+}, {
+"args": [],
+"method": &"finish_intro"
+}]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/Camera3D:rotation:x")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.18516162, 0, 0, 6.5, -0.0039224923, -0.055850536, -2.4166667, 0.040168695, 0, 0),
+"times": PackedFloat32Array(21.5, 36)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cameras/Camera3D:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.513, -0.3, 0, 6.594307, 0.0073671937, 1.851, -2.4166667, -0.19166666, 0, 0),
+"times": PackedFloat32Array(21.5, 36)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cameras/Camera3D:position:z")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(23.403, -0.25, 0, 0.96, 0, 17.103, -2.4166667, 1.0499998, 0, 0),
+"times": PackedFloat32Array(21.5, 36)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("UI/White:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cameras/Camera3D4:current")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(24),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cameras/Camera3D4:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(24, 27.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1.858, 0.297, 19.448), Vector3(1.858, 0.3, 14.364)]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AudioNode")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_intro_song"
+}]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Cameras/Camera3D5:current")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Cameras/Camera3D5:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(12, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-30.862, 14.51, -29.698), Vector3(-30.012, 14.51, -29.698)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("UI/White:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(18, 36),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_door_close_animation"
+}, {
+"args": [],
+"method": &"show_movement_tutorial_text"
+}]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Cameras/Camera3D6:current")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6m72w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cameras/Camera3D2:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.5707964, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/Camera3D2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 5.578, 12.258)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/Camera3D2:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/Camera3D3:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cameras/Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cameras/Camera3D:rotation:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.30194196, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/Camera3D:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.513, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cameras/Camera3D:position:z")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(23.403, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/White:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cameras/Camera3D4:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cameras/Camera3D4:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.8575196, 1.597086, 20.48325)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cameras/Camera3D5:current")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Cameras/Camera3D5:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-30.862, 14.51, -29.698)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("UI/White:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Cameras/Camera3D6:current")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m72w"]
+_data = {
+&"Intro": SubResource("Animation_1fp7r"),
+&"RESET": SubResource("Animation_6m72w")
+}
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5dby"]
 render_priority = 0
 shader = ExtResource("4_6m72w")
@@ -68,370 +496,14 @@ shader_parameter/wind_speed = 0.33
 shader_parameter/twist_strength = 0.0
 shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
 
-[sub_resource type="Animation" id="Animation_1fp7r"]
-resource_name = "Intro"
-length = 26.0
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.5707964, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 5.578, 12.258)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D2:current")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D3:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:current")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 16.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("PlayerEntity")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 13.5, 24),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [],
-"method": &"enter_cutscene"
-}, {
-"args": [],
-"method": &"trigger_intro"
-}, {
-"args": [],
-"method": &"finish_intro"
-}]
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Camera3D:rotation:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0.18516162, 0, 0, 6.5, -0.0039224923, 0, -4, 0.0023731124, 0, 0),
-"times": PackedFloat32Array(14, 26)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Camera3D:position:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.513, -0.3, 0, 6.594307, 0.0073671937, 1.663, -4, -0.012197971, 0, 0),
-"times": PackedFloat32Array(14, 26)
-}
-tracks/8/type = "bezier"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Camera3D:position:z")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(23.403, -0.25, 0, 0.96, 0, 18.233, -2.5, -0.010314941, 0, 0),
-"times": PackedFloat32Array(14, 26)
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Camera3D4:current")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(14),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Camera3D4:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(14, 16.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1.8575195, 1.597086, 18.317606), Vector3(1.8575194, 1.597086, 14.78216)]
-}
+[node name="World" type="Node3D" unique_id=298276808 node_paths=PackedStringArray("intro_level_animation_player")]
+script = ExtResource("1_bq33v")
+intro_level_animation_player = NodePath("Levels/Level_00/IntroLevel/AnimationPlayer")
 
-[sub_resource type="Animation" id="Animation_6m72w"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D2:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.5707964, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 5.578, 12.258)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D2:current")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D3:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:current")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Camera3D:rotation:x")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.30194196, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "bezier"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Camera3D:position:y")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0.513, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/7/type = "bezier"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Camera3D:position:z")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(23.403, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CanvasLayer/ColorRect:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Camera3D4:current")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Camera3D4:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.8575196, 1.597086, 20.48325)]
-}
+[node name="UI" type="CanvasLayer" parent="." unique_id=475020033]
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6m72w"]
-_data = {
-&"Intro": SubResource("Animation_1fp7r"),
-&"RESET": SubResource("Animation_6m72w")
-}
-
-[node name="World" type="Node3D" unique_id=298276808]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=54281746]
-environment = SubResource("Environment_gb53w")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=138114866]
-transform = Transform3D(0.1364315, -0.5545124, 0.8209156, -0.021650445, 0.8267971, 0.56208336, -0.99041283, -0.09445908, 0.100795746, 0, 3.974901, 0)
-light_color = Color(1, 0.98583335, 0.95, 1)
-light_energy = 0.65
-shadow_enabled = true
-directional_shadow_pancake_size = 50.0
-
-[node name="PlayerEntity" parent="." unique_id=337366621 node_paths=PackedStringArray("cutscene_camera_intro") instance=ExtResource("1_v5dby")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
-cutscene_camera_intro = NodePath("../Camera3D")
-
-[node name="Collection" parent="." unique_id=605819155 instance=ExtResource("6_t5ptc")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
-
-[node name="Plane" parent="Collection" index="11" unique_id=1661519114]
-surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
-
-[node name="Plane_001" parent="Collection" index="13" unique_id=795753789]
-material_override = SubResource("ShaderMaterial_v5dby")
-surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
-
-[node name="Plane_002" parent="Collection" index="14" unique_id=663868038]
-surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
-
-[node name="Plane_003" parent="Collection" index="15" unique_id=789637195]
-surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
-
-[node name="Plane_004" parent="Collection" index="16" unique_id=1491412694]
-surface_material_override/0 = SubResource("ShaderMaterial_bq33v")
-
-[node name="Plane_005" parent="Collection" index="17" unique_id=99129429]
-surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
-
-[node name="Plane_006" parent="Collection" index="18" unique_id=211117766]
-surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
-
-[node name="Plane_007" parent="Collection" index="19" unique_id=883051662]
-surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=314545714]
-transform = Transform3D(1, 0, 0, 0, 0.9547606, -0.2973748, 0, 0.2973748, 0.9547606, 0, 0.513, 23.403)
-current = true
-fov = 45.0
-
-[node name="ReflectionProbe" type="ReflectionProbe" parent="." unique_id=1938116626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -2.1606827)
-blend_distance = 0.5
-size = Vector3(78.40259, 44.678833, 125.445786)
-ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
-ambient_color_energy = 0.2
-
-[node name="Camera3D2" type="Camera3D" parent="." unique_id=978733880]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 5.578, 12.258)
-current = true
-fov = 46.6
-
-[node name="Cutscenes" type="AnimationPlayer" parent="." unique_id=1479005614]
-libraries/ = SubResource("AnimationLibrary_6m72w")
-autoplay = &"Intro"
-
-[node name="Camera3D3" type="Camera3D" parent="." unique_id=173657259]
-transform = Transform3D(0.66131186, -0.32411227, -0.67647445, 0, 0.90183246, -0.43208572, 0.75011104, 0.28574342, 0.5963925, 8.3, 12.7, 29.7)
-fov = 50.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=475020033]
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1611011663]
+[node name="White" type="ColorRect" parent="UI" unique_id=1611011663]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -440,9 +512,161 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.98039216, 0.98039216, 0.98039216, 1)
 
-[node name="Camera3D4" type="Camera3D" parent="." unique_id=1065481396]
+[node name="AudioNode" type="Node" parent="." unique_id=813726157]
+script = ExtResource("1_t5ptc")
+
+[node name="Environment" type="Node" parent="." unique_id=635565226]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=54281746]
+environment = SubResource("Environment_gb53w")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment" unique_id=138114866]
+transform = Transform3D(0.13643152, -0.5545124, 0.82091564, -0.021650447, 0.8267971, 0.5620834, -0.9904129, -0.09445908, 0.10079575, 0, 3.974901, 0)
+light_color = Color(1, 0.98583335, 0.95, 1)
+light_energy = 0.65
+shadow_enabled = true
+directional_shadow_pancake_size = 50.0
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Environment" unique_id=1938116626]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -2.1606827)
+blend_distance = 0.5
+size = Vector3(78.40259, 44.678833, 125.445786)
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment" unique_id=340709777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.464456, 7.463255, 50.056465)
+light_color = Color(1, 0.19, 0.19, 1)
+light_energy = 14.592
+omni_range = 15.519517
+
+[node name="InteractionZones" type="Node" parent="." unique_id=1660438069]
+
+[node name="PlayerTriggerZone" parent="InteractionZones" unique_id=800767133 instance=ExtResource("4_bq33v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18.174847)
+arguments = ["Press [icon:jump:64] to jump.", 5.0]
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractionZones/PlayerTriggerZone" unique_id=786939285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4586465, 3.826601)
+shape = SubResource("BoxShape3D_bq33v")
+
+[node name="Cameras" type="Node" parent="." unique_id=445746296]
+
+[node name="Cutscenes" type="AnimationPlayer" parent="Cameras" unique_id=1479005614]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_6m72w")
+autoplay = &"Intro"
+
+[node name="Camera3D" type="Camera3D" parent="Cameras" unique_id=314545714]
+transform = Transform3D(1, 0, 0, 0, 0.9547608, -0.29737487, 0, 0.29737487, 0.9547608, 0, 0.513, 23.403)
+current = true
+fov = 55.0
+
+[node name="Camera3D2" type="Camera3D" parent="Cameras" unique_id=978733880]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 5.578, 12.258)
+current = true
+fov = 46.6
+
+[node name="Camera3D3" type="Camera3D" parent="Cameras" unique_id=173657259]
+transform = Transform3D(0.66131186, -0.3241123, -0.6764745, 0, 0.9018325, -0.43208575, 0.75011104, 0.28574345, 0.5963926, 8.3, 12.7, 29.7)
+fov = 50.0
+
+[node name="Camera3D4" type="Camera3D" parent="Cameras" unique_id=1065481396]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8575196, 1.597086, 20.48325)
 current = true
 fov = 45.0
 
-[editable path="Collection"]
+[node name="Camera3D5" type="Camera3D" parent="Cameras" unique_id=630090270]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.862, 14.51, -29.698)
+current = true
+fov = 65.0
+
+[node name="Camera3D6" type="Camera3D" parent="Cameras" unique_id=96649952]
+transform = Transform3D(-0.7384553, -0.21730453, -0.63832784, 0, 0.94664925, -0.32226568, 0.6743024, -0.2379788, -0.6990582, -8.927, 3.981, 17.73)
+fov = 45.0
+
+[node name="Entities" type="Node" parent="." unique_id=170325699]
+
+[node name="PlayerEntity" parent="Entities" unique_id=337366621 node_paths=PackedStringArray("cutscene_camera_intro") instance=ExtResource("1_v5dby")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 13.5)
+cutscene_camera_intro = NodePath("../../Cameras/Camera3D")
+
+[node name="CamPivot" parent="Entities/PlayerEntity" index="3" unique_id=1614067786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 13.5)
+
+[node name="Skeleton3D" parent="Entities/PlayerEntity/Visuals/metarig" parent_id_path=PackedInt32Array(337366621, 2129848831, 1758575231) index="0" unique_id=974597475]
+bones/3/rotation = Quaternion(-0.08984047, 3.8495273e-07, 5.3220487e-05, 0.99595624)
+bones/4/rotation = Quaternion(0.01828473, 0.00037852916, -0.00029640258, 0.99983275)
+bones/6/rotation = Quaternion(0.017107662, 0.07395243, 1.8969642e-05, 0.9971151)
+bones/14/rotation = Quaternion(-0.6049962, -0.34574527, -0.35624498, 0.62251854)
+bones/15/rotation = Quaternion(-0.28311557, 0.692532, -0.52025366, 0.41180247)
+bones/16/rotation = Quaternion(0.1953459, 0.04153114, -0.08498959, 0.97616184)
+bones/18/rotation = Quaternion(-0.054966625, -0.032281227, -0.20172042, 0.97736657)
+bones/19/rotation = Quaternion(-0.022869984, 0.010730435, 0.0043647513, 0.99967134)
+bones/22/rotation = Quaternion(-0.6088223, 0.33905208, 0.36254752, 0.61882025)
+bones/23/rotation = Quaternion(-0.2838958, -0.6915675, 0.52329785, 0.40901965)
+bones/24/rotation = Quaternion(0.1837593, -0.03532372, 0.05788813, 0.98062927)
+bones/26/rotation = Quaternion(-0.10379897, 0.06851517, 0.3049926, 0.9441986)
+bones/27/rotation = Quaternion(-0.07976736, 0.060160395, 0.2092541, 0.97274387)
+
+[node name="Levels" type="Node" parent="." unique_id=1781002574]
+
+[node name="Level_00" type="Node3D" parent="Levels" unique_id=653413364]
+
+[node name="IntroLevel" parent="Levels/Level_00" unique_id=605819155 instance=ExtResource("6_t5ptc")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Cube_006" parent="Levels/Level_00/IntroLevel" index="5" unique_id=1789692007]
+transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 14.940949, -7.3380804)
+
+[node name="Cube_007" parent="Levels/Level_00/IntroLevel" index="7" unique_id=1684514431]
+transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 14.895227, 7.383801)
+
+[node name="Cube_008" parent="Levels/Level_00/IntroLevel" index="8" unique_id=1935120414]
+transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 0.17334652, 7.3380775)
+
+[node name="Cube_009" parent="Levels/Level_00/IntroLevel" index="9" unique_id=1618274401]
+transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 0.21906805, -7.383802)
+
+[node name="Plane" parent="Levels/Level_00/IntroLevel" index="10" unique_id=1549439789]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_001" parent="Levels/Level_00/IntroLevel" index="12" unique_id=1672606099]
+material_override = SubResource("ShaderMaterial_v5dby")
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_002" parent="Levels/Level_00/IntroLevel" index="13" unique_id=1251708484]
+surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
+
+[node name="Plane_003" parent="Levels/Level_00/IntroLevel" index="14" unique_id=267420994]
+surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
+
+[node name="Plane_004" parent="Levels/Level_00/IntroLevel" index="15" unique_id=1863464350]
+surface_material_override/0 = SubResource("ShaderMaterial_bq33v")
+
+[node name="Plane_005" parent="Levels/Level_00/IntroLevel" index="16" unique_id=325375253]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_006" parent="Levels/Level_00/IntroLevel" index="17" unique_id=2074403168]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Plane_007" parent="Levels/Level_00/IntroLevel" index="18" unique_id=1582816238]
+surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
+
+[node name="Puzzle" type="Node3D" parent="Levels/Level_00" unique_id=1468295892]
+
+[node name="PressurePad" parent="Levels/Level_00/Puzzle" unique_id=1177825712 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85409117, -40.361084)
+
+[node name="MechanismController" type="Node" parent="Levels/Level_00/Puzzle" unique_id=212827120 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad")]
+one_shot = true
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="Door_01_Puzzle_00" parent="Levels/Level_00/Puzzle" unique_id=944798950 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("14_umvgx")]
+mechanism_controller = NodePath("../MechanismController")
+
+[editable path="Entities/PlayerEntity"]
+[editable path="Entities/PlayerEntity/Visuals"]
+[editable path="Levels/Level_00/IntroLevel"]
