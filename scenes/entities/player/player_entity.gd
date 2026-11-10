@@ -67,6 +67,10 @@ var stamina: float = MAX_STAMINA
 @export var stamina_idle_delay: float = 4.0
 @export var stamina_fade_duration: float = 0.6
 
+
+@export_group("Audio")
+@export var jump_sfx: AudioStreamPlayer3D
+
 var stamina_last_value: float = MAX_STAMINA
 var stamina_idle_timer: float = 0.0
 var stamina_fade_tween: Tween
@@ -431,6 +435,9 @@ func handle_jump() -> void:
 		
 		if sprinting:
 			stamina -= 10.0
+	
+	if not is_echo():
+		jump_sfx.play()
 	
 
 func handle_movement(delta: float) -> void:

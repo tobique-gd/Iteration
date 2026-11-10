@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d13okt4lltabr"]
+
+[ext_resource type="Texture2D" uid="uid://38cu6j2qpfbq" path="res://assets/models/world/level_intro/image_02.jpg" id="1_56roq"]
+[ext_resource type="Texture2D" uid="uid://3obklgxm2l4l" path="res://assets/models/world/level_intro/Image_1.jpg" id="2_03bbc"]
+
+[resource]
+resource_name = "lambert1"
+cull_mode = 2
+albedo_texture = ExtResource("1_56roq")
+metallic_texture = ExtResource("2_03bbc")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_03bbc")
+roughness_texture_channel = 1
+ao_enabled = true
+ao_texture = ExtResource("2_03bbc")

@@ -9,14 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://bo1mx5yxxfmcm" path="res://assets/models/world/level_intro/intro.gltf" id="6_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://dflsoybt72huy" path="res://scenes/world/props/pressure_pad.tscn" id="8_j2gmx"]
 [ext_resource type="Script" uid="uid://ca6bulouspoys" path="res://scripts/mechanisms/mechanism_controller.gd" id="9_1yooq"]
+[ext_resource type="PackedScene" uid="uid://d3s4wnmlwbps" path="res://scenes/world/levels/level_01.tscn" id="11_5qq27"]
 [ext_resource type="PackedScene" uid="uid://b7ow43hs1yjeg" path="res://scenes/world/props/door_01_puzzle_00.tscn" id="14_umvgx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6m72w"]
 shader = ExtResource("1_1fp7r")
-shader_parameter/sky_top = Color(0.5488, 0.5530933, 0.56, 1)
-shader_parameter/sky_horizon = Color(0.55, 0.55, 0.55, 1)
-shader_parameter/cloud_light = Color(0.59, 0.59, 0.59, 1)
-shader_parameter/cloud_dark = Color(0.5589535, 0.5589535, 0.5589535, 1)
+shader_parameter/sky_top = Color(0.52, 0.52, 0.52, 1)
+shader_parameter/sky_horizon = Color(0.46618086, 0.4661808, 0.4661808, 1)
+shader_parameter/cloud_light = Color(0.5137255, 0.5137255, 0.5137255, 1)
+shader_parameter/cloud_dark = Color(0.4955091, 0.4955091, 0.4955091, 1)
 shader_parameter/cloud_scale = 6.0
 shader_parameter/coverage = 0.48400002299
 shader_parameter/softness = 0.06400000234148
@@ -472,6 +473,9 @@ _data = {
 &"RESET": SubResource("Animation_6m72w")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gb53w"]
+radius = 0.6
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v5dby"]
 render_priority = 0
 shader = ExtResource("4_6m72w")
@@ -496,9 +500,10 @@ shader_parameter/wind_speed = 0.33
 shader_parameter/twist_strength = 0.0
 shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
 
-[node name="World" type="Node3D" unique_id=298276808 node_paths=PackedStringArray("intro_level_animation_player")]
+[node name="World" type="Node3D" unique_id=298276808 node_paths=PackedStringArray("intro_level_animation_player", "cutscenes")]
 script = ExtResource("1_bq33v")
 intro_level_animation_player = NodePath("Levels/Level_00/IntroLevel/AnimationPlayer")
+cutscenes = NodePath("Cameras/Cutscenes")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=475020033]
 
@@ -528,9 +533,14 @@ shadow_enabled = true
 directional_shadow_pancake_size = 50.0
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Environment" unique_id=1938116626]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -2.1606827)
-blend_distance = 0.5
-size = Vector3(78.40259, 44.678833, 125.445786)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, 3.06221)
+size = Vector3(78.40259, 44.678833, 115)
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="ReflectionProbe2" type="ReflectionProbe" parent="Environment" unique_id=841109680]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -75.43779)
+size = Vector3(78.40259, 44.678833, 46)
 ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
 ambient_color_energy = 0.2
 
@@ -582,7 +592,7 @@ current = true
 fov = 65.0
 
 [node name="Camera3D6" type="Camera3D" parent="Cameras" unique_id=96649952]
-transform = Transform3D(-0.7384553, -0.21730453, -0.63832784, 0, 0.94664925, -0.32226568, 0.6743024, -0.2379788, -0.6990582, -8.927, 3.981, 17.73)
+transform = Transform3D(-0.73845524, -0.21730454, -0.63832784, 0, 0.9466492, -0.32226568, 0.6743024, -0.2379788, -0.6990581, -8.927, 3.981, 17.73)
 fov = 45.0
 
 [node name="Entities" type="Node" parent="." unique_id=170325699]
@@ -595,19 +605,19 @@ cutscene_camera_intro = NodePath("../../Cameras/Camera3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 13.5)
 
 [node name="Skeleton3D" parent="Entities/PlayerEntity/Visuals/metarig" parent_id_path=PackedInt32Array(337366621, 2129848831, 1758575231) index="0" unique_id=974597475]
-bones/3/rotation = Quaternion(-0.08984047, 3.8495273e-07, 5.3220487e-05, 0.99595624)
-bones/4/rotation = Quaternion(0.01828473, 0.00037852916, -0.00029640258, 0.99983275)
-bones/6/rotation = Quaternion(0.017107662, 0.07395243, 1.8969642e-05, 0.9971151)
-bones/14/rotation = Quaternion(-0.6049962, -0.34574527, -0.35624498, 0.62251854)
-bones/15/rotation = Quaternion(-0.28311557, 0.692532, -0.52025366, 0.41180247)
-bones/16/rotation = Quaternion(0.1953459, 0.04153114, -0.08498959, 0.97616184)
-bones/18/rotation = Quaternion(-0.054966625, -0.032281227, -0.20172042, 0.97736657)
-bones/19/rotation = Quaternion(-0.022869984, 0.010730435, 0.0043647513, 0.99967134)
+bones/3/rotation = Quaternion(-0.08848419, 2.3751204e-07, 3.420856e-05, 0.99607766)
+bones/4/rotation = Quaternion(0.023657732, 6.401252e-05, -5.011769e-05, 0.99972016)
+bones/6/rotation = Quaternion(0.015764682, 0.014351424, -0.0028806985, 0.9997686)
+bones/14/rotation = Quaternion(-0.60891175, -0.33879966, -0.36280325, 0.61872065)
+bones/15/rotation = Quaternion(-0.28277737, 0.69239056, -0.5243274, 0.40707877)
+bones/16/rotation = Quaternion(0.18305269, 0.032758866, -0.06406683, 0.9804662)
+bones/18/rotation = Quaternion(-0.056923088, -0.04975086, -0.25426683, 0.96417487)
+bones/19/rotation = Quaternion(-0.025352556, -0.011550387, -0.09124679, 0.9954386)
 bones/22/rotation = Quaternion(-0.6088223, 0.33905208, 0.36254752, 0.61882025)
-bones/23/rotation = Quaternion(-0.2838958, -0.6915675, 0.52329785, 0.40901965)
-bones/24/rotation = Quaternion(0.1837593, -0.03532372, 0.05788813, 0.98062927)
-bones/26/rotation = Quaternion(-0.10379897, 0.06851517, 0.3049926, 0.9441986)
-bones/27/rotation = Quaternion(-0.07976736, 0.060160395, 0.2092541, 0.97274387)
+bones/23/rotation = Quaternion(-0.29481563, -0.6900535, 0.5265819, 0.39952654)
+bones/24/rotation = Quaternion(0.19163485, -0.04163609, 0.035067003, 0.97995555)
+bones/26/rotation = Quaternion(-0.061998907, 0.03605287, 0.21883805, 0.97312194)
+bones/27/rotation = Quaternion(-0.03446381, 0.013712138, 0.09752906, 0.9945412)
 
 [node name="Levels" type="Node" parent="." unique_id=1781002574]
 
@@ -616,41 +626,50 @@ bones/27/rotation = Quaternion(-0.07976736, 0.060160395, 0.2092541, 0.97274387)
 [node name="IntroLevel" parent="Levels/Level_00" unique_id=605819155 instance=ExtResource("6_t5ptc")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Cube_006" parent="Levels/Level_00/IntroLevel" index="5" unique_id=1789692007]
+[node name="StaticBody3D" type="StaticBody3D" parent="Levels/Level_00/IntroLevel/Object_8" parent_id_path=PackedInt32Array(605819155, 1999831898) index="0" unique_id=2112141294]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Levels/Level_00/IntroLevel/Object_8/StaticBody3D" unique_id=1390667150]
+transform = Transform3D(0.9999975, 0, 0, 0, 1, 0, 0, 0, 0.9999975, 0, 0.20000002, 0)
+shape = SubResource("CapsuleShape3D_gb53w")
+
+[node name="Cube_003" parent="Levels/Level_00/IntroLevel" index="4" unique_id=1747386352]
+cast_shadow = 2
+
+[node name="Cube_006" parent="Levels/Level_00/IntroLevel" index="5" unique_id=152049848]
 transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 14.940949, -7.3380804)
 
-[node name="Cube_007" parent="Levels/Level_00/IntroLevel" index="7" unique_id=1684514431]
+[node name="Cube_007" parent="Levels/Level_00/IntroLevel" index="7" unique_id=1266071140]
 transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 14.895227, 7.383801)
 
-[node name="Cube_008" parent="Levels/Level_00/IntroLevel" index="8" unique_id=1935120414]
+[node name="Cube_008" parent="Levels/Level_00/IntroLevel" index="8" unique_id=40625294]
 transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 0.17334652, 7.3380775)
 
-[node name="Cube_009" parent="Levels/Level_00/IntroLevel" index="9" unique_id=1618274401]
+[node name="Cube_009" parent="Levels/Level_00/IntroLevel" index="9" unique_id=1007841053]
 transform = Transform3D(1, -7.0531314e-10, 4.3522657e-08, -4.3522657e-08, -0.032404903, 0.9994748, 7.0531314e-10, -0.9994748, -0.032404903, 35.494957, 0.21906805, -7.383802)
 
-[node name="Plane" parent="Levels/Level_00/IntroLevel" index="10" unique_id=1549439789]
+[node name="Plane" parent="Levels/Level_00/IntroLevel" index="10" unique_id=1097866292]
 surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
 
-[node name="Plane_001" parent="Levels/Level_00/IntroLevel" index="12" unique_id=1672606099]
+[node name="Plane_001" parent="Levels/Level_00/IntroLevel" index="12" unique_id=241708355]
 material_override = SubResource("ShaderMaterial_v5dby")
 surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
 
-[node name="Plane_002" parent="Levels/Level_00/IntroLevel" index="13" unique_id=1251708484]
+[node name="Plane_002" parent="Levels/Level_00/IntroLevel" index="13" unique_id=1546849045]
 surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
 
-[node name="Plane_003" parent="Levels/Level_00/IntroLevel" index="14" unique_id=267420994]
+[node name="Plane_003" parent="Levels/Level_00/IntroLevel" index="14" unique_id=1210271268]
 surface_material_override/0 = SubResource("ShaderMaterial_t5ptc")
 
-[node name="Plane_004" parent="Levels/Level_00/IntroLevel" index="15" unique_id=1863464350]
+[node name="Plane_004" parent="Levels/Level_00/IntroLevel" index="15" unique_id=932013672]
 surface_material_override/0 = SubResource("ShaderMaterial_bq33v")
 
-[node name="Plane_005" parent="Levels/Level_00/IntroLevel" index="16" unique_id=325375253]
+[node name="Plane_005" parent="Levels/Level_00/IntroLevel" index="16" unique_id=1259289820]
 surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
 
-[node name="Plane_006" parent="Levels/Level_00/IntroLevel" index="17" unique_id=2074403168]
+[node name="Plane_006" parent="Levels/Level_00/IntroLevel" index="17" unique_id=1268965207]
 surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
 
-[node name="Plane_007" parent="Levels/Level_00/IntroLevel" index="18" unique_id=1582816238]
+[node name="Plane_007" parent="Levels/Level_00/IntroLevel" index="18" unique_id=786044729]
 surface_material_override/0 = SubResource("ShaderMaterial_v5dby")
 
 [node name="Puzzle" type="Node3D" parent="Levels/Level_00" unique_id=1468295892]
@@ -666,6 +685,13 @@ metadata/_custom_type_script = "uid://ca6bulouspoys"
 
 [node name="Door_01_Puzzle_00" parent="Levels/Level_00/Puzzle" unique_id=944798950 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("14_umvgx")]
 mechanism_controller = NodePath("../MechanismController")
+
+[node name="Level_01" type="Node3D" parent="Levels" unique_id=1548357642]
+
+[node name="Level_01" parent="Levels/Level_01" unique_id=724732184 instance=ExtResource("11_5qq27")]
+
+[node name="PressurePad" parent="Levels/Level_01" unique_id=472405735 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7000003, 4.619, -94.5)
 
 [editable path="Entities/PlayerEntity"]
 [editable path="Entities/PlayerEntity/Visuals"]

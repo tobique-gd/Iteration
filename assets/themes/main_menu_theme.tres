@@ -1,6 +1,11 @@
 [gd_resource type="Theme" format=3 uid="uid://bnmrd8hjgdrqs"]
 
+[ext_resource type="FontFile" uid="uid://demf3eyx4f7nb" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskBold.ttf" id="1_pujlq"]
 [ext_resource type="FontFile" uid="uid://cc8yx0mjws800" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskRegular.ttf" id="1_s6iwt"]
+[ext_resource type="Texture2D" uid="uid://d3b24m7gx522o" path="res://assets/themes/icons/slider_grab.png" id="1_td21d"]
+[ext_resource type="Texture2D" uid="uid://4bm4ww8x872h" path="res://assets/themes/icons/checkbutton_unchecked.png" id="1_vy1k4"]
+[ext_resource type="Texture2D" uid="uid://bin7e8fgjlldh" path="res://assets/themes/icons/checkbutton_checked.png" id="2_khn6x"]
+[ext_resource type="Texture2D" uid="uid://bv73bplvoepjm" path="res://assets/themes/icons/slider_grab_highlight.png" id="2_r3u0f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6iwt"]
 bg_color = Color(0.015971804, 0.015971804, 0.01597179, 1)
@@ -14,6 +19,61 @@ expand_margin_right = 12.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6iwt"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vy1k4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_khn6x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xj5vi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ihns"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p66f6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r3u0f"]
+bg_color = Color(0.036100842, 0.03610094, 0.036100868, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy1k4"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.8992584, 0.8992584, 0.8992584, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ihns"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.8625204, 0.8625225, 0.8625207, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p66f6"]
+bg_color = Color(0.8625204, 0.8625225, 0.8625207, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l6uhw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pujlq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_khn6x"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.8625204, 0.8625225, 0.8625207, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l2lwm"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.03839716, 0.038397174, 0.038397126, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_td21d"]
+content_margin_left = 16.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 8.0
+bg_color = Color(0.9801393, 0.9801393, 0.9801393, 1)
+
 [resource]
 default_font = ExtResource("1_s6iwt")
 default_font_size = 64
@@ -25,3 +85,49 @@ Button/styles/hover = SubResource("StyleBoxFlat_s6iwt")
 Button/styles/hover_pressed = SubResource("StyleBoxFlat_pujlq")
 Button/styles/normal = SubResource("StyleBoxEmpty_s6iwt")
 Button/styles/pressed = SubResource("StyleBoxFlat_pujlq")
+CheckButton/icons/checked = ExtResource("1_vy1k4")
+CheckButton/icons/unchecked = ExtResource("2_khn6x")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_vy1k4")
+CheckButton/styles/hover = SubResource("StyleBoxEmpty_khn6x")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxEmpty_xj5vi")
+CheckButton/styles/normal = SubResource("StyleBoxEmpty_3ihns")
+CheckButton/styles/pressed = SubResource("StyleBoxEmpty_p66f6")
+HSlider/icons/grabber = ExtResource("1_td21d")
+HSlider/icons/grabber_disabled = null
+HSlider/icons/grabber_highlight = ExtResource("2_r3u0f")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_r3u0f")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_r3u0f")
+HSlider/styles/slider = SubResource("StyleBoxFlat_vy1k4")
+OptionButton/colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+OptionButton/colors/font_focus_color = Color(0.03839711, 0.038397152, 0.03839736, 1)
+OptionButton/colors/font_hover_color = Color(0.04073593, 0.040736005, 0.040736213, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0.04073602, 0.040736012, 0.040736005, 1)
+OptionButton/colors/font_pressed_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+OptionButton/font_sizes/font_size = 36
+OptionButton/styles/focus = SubResource("StyleBoxFlat_3ihns")
+OptionButton/styles/hover = SubResource("StyleBoxFlat_p66f6")
+OptionButton/styles/hover_pressed = SubResource("StyleBoxFlat_p66f6")
+OptionButton/styles/normal = SubResource("StyleBoxEmpty_l6uhw")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_p66f6")
+PopupMenu/colors/font_color = Color(0.038397297, 0.03839711, 0.038397152, 1)
+PopupMenu/colors/font_hover_color = Color(0.040736154, 0.04073596, 0.040735997, 1)
+PopupMenu/colors/font_separator_color = Color(0.040736154, 0.04073596, 0.040735997, 1)
+PopupMenu/font_sizes/font_separator_size = 16
+PopupMenu/font_sizes/font_size = 36
+PopupMenu/font_sizes/title_font_size = 16
+PopupMenu/styles/hover = null
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_p66f6")
+TabContainer/colors/font_hovered_color = Color(0.04073593, 0.040736005, 0.040736213, 1)
+TabContainer/colors/font_selected_color = Color(0.95, 0.95, 0.95, 1)
+TabContainer/colors/font_unselected_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
+TabContainer/colors/icon_selected_color = Color(1, 1, 1, 1)
+TabContainer/colors/icon_unselected_color = Color(1, 1, 1, 1)
+TabContainer/font_sizes/font_size = 42
+TabContainer/fonts/font = ExtResource("1_pujlq")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_pujlq")
+TabContainer/styles/tab_disabled = null
+TabContainer/styles/tab_focus = null
+TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_khn6x")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_l2lwm")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_td21d")
+TabContainer/styles/tabbar_background = null

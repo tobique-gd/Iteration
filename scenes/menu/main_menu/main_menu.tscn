@@ -7,6 +7,10 @@
 [ext_resource type="Script" uid="uid://buxltys5vruqf" path="res://scenes/menu/main_menu/custom_look_button.gd" id="4_ww8d4"]
 [ext_resource type="Texture2D" uid="uid://duj75vdewdhkc" path="res://assets/images/ITERATION_small_logo.png" id="6_wd51l"]
 [ext_resource type="FontFile" uid="uid://demf3eyx4f7nb" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskBold.ttf" id="7_3tda0"]
+[ext_resource type="AudioStream" uid="uid://xmjgcsu5kq7x" path="res://assets/audio/sfx/JDSherbert - Ultimate UI SFX Pack - Select - 1.ogg" id="8_pqpva"]
+[ext_resource type="AudioStream" uid="uid://bpgqa4ibhrhlp" path="res://assets/audio/sfx/JDSherbert - Ultimate UI SFX Pack - Select - 2.ogg" id="9_rek8k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rek8k"]
 
 [sub_resource type="Animation" id="Animation_ww8d4"]
 length = 0.001
@@ -84,7 +88,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/6/path = NodePath("MenuVisibilityWrapper/ActionButtons:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -105,7 +109,7 @@ tracks/0/path = NodePath("MenuVisibilityWrapper/Menu/Logo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 6.5, 7.5),
+"times": PackedFloat32Array(0, 5, 6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -117,7 +121,7 @@ tracks/1/path = NodePath("MenuVisibilityWrapper/Menu/MarginContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 7.5, 8.5),
+"times": PackedFloat32Array(0, 6, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -129,7 +133,7 @@ tracks/2/path = NodePath("Label:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.5, 3, 5, 5.5),
+"times": PackedFloat32Array(0, 1, 1.5, 3.5, 4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -141,7 +145,7 @@ tracks/3/path = NodePath("Label:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5.5),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -161,11 +165,11 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/5/path = NodePath("MenuVisibilityWrapper/ActionButtons:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(7.5, 8.5),
+"times": PackedFloat32Array(6, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -177,7 +181,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(4),
+"times": PackedFloat32Array(2.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -253,7 +257,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("MenuVisibilityWrapper/MarginContainer:modulate")
+tracks/5/path = NodePath("MenuVisibilityWrapper/ActionButtons:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -301,7 +305,7 @@ _data = {
 &"switch_menu": SubResource("Animation_3tda0")
 }
 
-[node name="MainMenu" type="Control" unique_id=1401174648 node_paths=PackedStringArray("animation_player", "menu", "credits")]
+[node name="MainMenu" type="Control" unique_id=1401174648 node_paths=PackedStringArray("animation_player", "menu", "credits", "options", "select_btn", "back_btn", "master_volume", "music_volume", "sound_effects_volume", "fps_cap")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -313,6 +317,13 @@ script = ExtResource("2_dk276")
 animation_player = NodePath("AnimationPlayer")
 menu = NodePath("MenuVisibilityWrapper/Menu")
 credits = NodePath("MenuVisibilityWrapper/Credits")
+options = NodePath("MenuVisibilityWrapper/Options")
+select_btn = NodePath("MenuVisibilityWrapper/ActionButtons/HBoxContainer/Select")
+back_btn = NodePath("MenuVisibilityWrapper/ActionButtons/HBoxContainer/Back")
+master_volume = NodePath("MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Master/MasterVolume")
+music_volume = NodePath("MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Music/MusicVolume")
+sound_effects_volume = NodePath("MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/SFX/SoundEffectsVolume")
+fps_cap = NodePath("MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2/FPSCap")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1321620419]
 layout_mode = 1
@@ -420,6 +431,173 @@ mouse_filter = 2
 texture = ExtResource("3_fvlue")
 expand_mode = 1
 
+[node name="Options" type="Control" parent="MenuVisibilityWrapper" unique_id=51236190]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MenuVisibilityWrapper/Options" unique_id=545700384]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="TabContainer" type="TabContainer" parent="MenuVisibilityWrapper/Options/MarginContainer" unique_id=1475696814]
+layout_mode = 2
+current_tab = 1
+
+[node name="Game" type="MarginContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer" unique_id=1697771276]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Video" type="MarginContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer" unique_id=1939367581]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video" unique_id=285831192]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer" unique_id=473049388]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer" unique_id=1608104954]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Vsync"
+
+[node name="Vsync" type="CheckButton" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer" unique_id=369691557]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer" unique_id=1295553306]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2" unique_id=324024604]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "FPS Cap"
+
+[node name="FPSCap" type="OptionButton" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2" unique_id=1582978603]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/h_separation = 16
+theme_override_font_sizes/font_size = 36
+alignment = 2
+selected = 8
+item_count = 11
+popup/item_0/text = "30"
+popup/item_0/id = 1
+popup/item_1/text = "60"
+popup/item_1/id = 2
+popup/item_2/text = "75"
+popup/item_2/id = 3
+popup/item_3/text = "100"
+popup/item_3/id = 4
+popup/item_4/text = "120"
+popup/item_4/id = 5
+popup/item_5/text = "144"
+popup/item_5/id = 6
+popup/item_6/text = "165"
+popup/item_6/id = 7
+popup/item_7/text = "200"
+popup/item_7/id = 8
+popup/item_8/text = "240"
+popup/item_8/id = 9
+popup/item_9/text = "360"
+popup/item_9/id = 10
+popup/item_10/text = "Unlimited"
+popup/item_10/id = 0
+
+[node name="Audio" type="MarginContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer" unique_id=561928333]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio" unique_id=465850903]
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=1540761876]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=1085310056]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=2113004855]
+layout_mode = 2
+theme_override_constants/separation = 189
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="MasterVolume" type="HSlider" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=593339209]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -40.0
+step = 0.01
+
+[node name="Music" type="HBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=349555927]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=650422372]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=491664729]
+layout_mode = 2
+theme_override_constants/separation = 202
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="MusicVolume" type="HSlider" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=319521462]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -40.0
+step = 0.01
+
+[node name="SFX" type="HBoxContainer" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=85820979]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=100325203]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sound Effects Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=1530591434]
+layout_mode = 2
+theme_override_constants/separation = 74
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="SoundEffectsVolume" type="HSlider" parent="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=877595651]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
 [node name="Credits" type="Control" parent="MenuVisibilityWrapper" unique_id=346197432]
 visible = false
 layout_mode = 1
@@ -483,9 +661,15 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE."
+SOFTWARE.
 
-[node name="MarginContainer" type="MarginContainer" parent="MenuVisibilityWrapper" unique_id=1161889460]
+[SFX] Ultimate UI Sound Effect Pack - JDSherbert
+
+Wet Floor Sign – Created by Chenchanchong
+Source: https://sketchfab.com/3d-models/wet-floor-sign-d0da8abf3c2a4046bbb56e7f6514dd23
+License: Creative Commons Attribution (CC BY 4.0)"
+
+[node name="ActionButtons" type="MarginContainer" parent="MenuVisibilityWrapper" unique_id=1161889460]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -499,13 +683,14 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
 theme_override_constants/margin_bottom = 64
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MenuVisibilityWrapper/MarginContainer" unique_id=1821770836]
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuVisibilityWrapper/ActionButtons" unique_id=1821770836]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 theme_override_constants/separation = 16
 
-[node name="Select" type="Button" parent="MenuVisibilityWrapper/MarginContainer/HBoxContainer" unique_id=1355425728]
+[node name="Select" type="Button" parent="MenuVisibilityWrapper/ActionButtons/HBoxContainer" unique_id=1355425728]
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
 theme_override_colors/font_focus_color = Color(0.9231732, 0.9231732, 0.9231732, 1)
@@ -515,7 +700,7 @@ theme_override_font_sizes/font_size = 36
 text = "Select"
 flat = true
 
-[node name="Back" type="Button" parent="MenuVisibilityWrapper/MarginContainer/HBoxContainer" unique_id=1676787906]
+[node name="Back" type="Button" parent="MenuVisibilityWrapper/ActionButtons/HBoxContainer" unique_id=1676787906]
 visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.038397167, 0.038397167, 0.03839716, 1)
@@ -577,7 +762,23 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("6_wd51l")
 expand_mode = 1
 
+[node name="Sfx" type="Node" parent="." unique_id=624669848]
+
+[node name="Select" type="AudioStreamPlayer" parent="Sfx" unique_id=1101867101]
+stream = ExtResource("8_pqpva")
+bus = &"Sfx"
+
+[node name="Back" type="AudioStreamPlayer" parent="Sfx" unique_id=2112072102]
+stream = ExtResource("9_rek8k")
+bus = &"Sfx"
+
 [connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer4/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer3/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="MenuVisibilityWrapper/Menu/MarginContainer/VBoxContainer/MenuButtonContainer2/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="MenuVisibilityWrapper/MarginContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="item_selected" from="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2/FPSCap" to="." method="_on_fps_cap_item_selected"]
+[connection signal="value_changed" from="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Master/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/Music/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="MenuVisibilityWrapper/Options/MarginContainer/TabContainer/Audio/VBoxContainer/SFX/SoundEffectsVolume" to="." method="_on_sound_effects_volume_value_changed"]
+[connection signal="pressed" from="MenuVisibilityWrapper/ActionButtons/HBoxContainer/Back" to="." method="_on_back_pressed"]

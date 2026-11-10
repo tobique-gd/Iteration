@@ -5,6 +5,9 @@
 [ext_resource type="Shader" uid="uid://bd76ejfu5nb76" path="res://scenes/entities/player/progress_fill.gdshader" id="2_x0dmc"]
 [ext_resource type="PackedScene" uid="uid://d4jqw8n3iu0ku" path="res://assets/models/entities/character/character.gltf" id="4_4squj"]
 [ext_resource type="AnimationLibrary" uid="uid://cn0t8esnu3tyc" path="res://assets/animations/PlayerIntroAnimation.glb" id="5_pb3hh"]
+[ext_resource type="AudioStream" uid="uid://b1c3hf6pynepo" path="res://assets/audio/sfx/character/jump_ahh_01.ogg" id="6_tcxfe"]
+[ext_resource type="AudioStream" uid="uid://dtgx15maw52j4" path="res://assets/audio/sfx/character/jump_ahh_02.ogg" id="7_asvm0"]
+[ext_resource type="AudioStream" uid="uid://dqtff061qfhj0" path="res://assets/audio/sfx/character/jump_ahh_03.ogg" id="8_fipds"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t1boa"]
 radius = 0.3
@@ -179,7 +182,15 @@ nodes/current_state/position = Vector2(90, 230)
 "nodes/Animation 5/position" = Vector2(-420, 390)
 node_connections = [&"output", 0, &"current_state", &"current_state", 0, &"Animation", &"current_state", 1, &"Animation 3", &"current_state", 2, &"Animation 2", &"current_state", 3, &"Animation 4", &"current_state", 4, &"Animation 5"]
 
-[node name="PlayerEntity" type="CharacterBody3D" unique_id=337366621 node_paths=PackedStringArray("mesh", "cam_pivot", "spring_arm", "ground_level", "animation_tree", "stamina_ui", "cam", "interact_box")]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_u618n"]
+random_pitch = 1.122462
+random_volume_offset_db = 1.0
+streams_count = 3
+stream_0/stream = ExtResource("6_tcxfe")
+stream_1/stream = ExtResource("7_asvm0")
+stream_2/stream = ExtResource("8_fipds")
+
+[node name="PlayerEntity" type="CharacterBody3D" unique_id=337366621 node_paths=PackedStringArray("mesh", "cam_pivot", "spring_arm", "ground_level", "animation_tree", "stamina_ui", "cam", "interact_box", "jump_sfx")]
 collision_layer = 2
 floor_snap_length = 0.0
 script = ExtResource("1_t1boa")
@@ -191,6 +202,7 @@ animation_tree = NodePath("AnimationBlending")
 stamina_ui = NodePath("UILayer/Stamina Bar")
 cam = NodePath("CamPivot/SpringArm3D/Camera3D")
 interact_box = NodePath("Visuals/InteractBox")
+jump_sfx = NodePath("Audio/JumpSfx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1470451182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0603514, 0)
@@ -227,32 +239,35 @@ spring_length = 4.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 fov = 55.0
 
+[node name="AudioListener3D" type="AudioListener3D" parent="CamPivot/SpringArm3D/Camera3D" unique_id=38815838]
+current = true
+
 [node name="Visuals" parent="." unique_id=2129848831 instance=ExtResource("4_4squj")]
 
 [node name="Skeleton3D" parent="Visuals/metarig" parent_id_path=PackedInt32Array(2129848831, 1758575231) index="0" unique_id=974597475]
 bones/1/position = Vector3(3.9421444e-09, 0.79427916, 0.026929334)
 bones/1/rotation = Quaternion(-1.1482987e-09, 0.9953529, -0.0962941, -7.514707e-08)
 bones/2/rotation = Quaternion(-0.049551845, 1.4581131e-08, -3.8735735e-09, 0.99877155)
-bones/3/rotation = Quaternion(-0.08746036, 1.2622343e-07, 1.985824e-05, 0.996168)
-bones/4/rotation = Quaternion(0.02475104, 8.523415e-09, 1.1247175e-09, 0.99969363)
-bones/6/rotation = Quaternion(0.016329395, -0.0029992624, 0.015155613, 0.9997474)
+bones/3/rotation = Quaternion(-0.08984047, 3.8495273e-07, 5.3220487e-05, 0.99595624)
+bones/4/rotation = Quaternion(0.022553544, 0.00012865118, -0.00010073361, 0.99974567)
+bones/6/rotation = Quaternion(0.016711598, 0.01882619, 0.011008656, 0.9996225)
 bones/7/rotation = Quaternion(-0.06713453, -1.9511901e-08, -6.730441e-09, 0.997744)
 bones/8/rotation = Quaternion(0.5206699, 0.5188717, 0.4771172, -0.4816993)
 bones/11/rotation = Quaternion(0.52067, -0.51887167, -0.47711712, -0.48169935)
-bones/14/rotation = Quaternion(-0.60809416, -0.34022924, -0.3615653, 0.61946434)
-bones/15/rotation = Quaternion(-0.29471907, 0.68794394, -0.5206473, 0.4108531)
-bones/16/rotation = Quaternion(0.18614945, 0.04492314, -0.04338391, 0.9805346)
+bones/14/rotation = Quaternion(-0.60633254, -0.34311685, -0.35875937, 0.6212273)
+bones/15/rotation = Quaternion(-0.2996622, 0.68604916, -0.51812613, 0.41362366)
+bones/16/rotation = Quaternion(0.19021188, 0.046616808, -0.04621078, 0.9795463)
 bones/17/rotation = Quaternion(-0.046218555, -0.17173141, 0.029112328, 0.9836284)
 bones/18/rotation = Quaternion(-0.054364752, -0.031378023, -0.20193757, 0.9773849)
-bones/19/rotation = Quaternion(-0.025010997, -0.00517062, -0.06612767, 0.99748427)
+bones/19/rotation = Quaternion(-0.024356747, -0.00021010963, -0.044161063, 0.9987275)
 bones/20/rotation = Quaternion(0.32420725, 0.023028513, -0.24425355, 0.9136189)
 bones/21/rotation = Quaternion(-0.028548852, 0.027235063, 0.07998167, 0.99601525)
-bones/22/rotation = Quaternion(-0.6068973, 0.34222186, 0.36021656, 0.6203256)
-bones/23/rotation = Quaternion(-0.2863816, -0.6910642, 0.52483606, 0.40615636)
-bones/24/rotation = Quaternion(0.17949747, -0.03504193, 0.06921814, 0.9806944)
+bones/22/rotation = Quaternion(-0.6040216, 0.34691694, 0.3566831, 0.62256217)
+bones/23/rotation = Quaternion(-0.28602564, -0.6910773, 0.5243422, 0.40702188)
+bones/24/rotation = Quaternion(0.17870961, -0.0342679, 0.07148875, 0.9807028)
 bones/25/rotation = Quaternion(-0.046218567, 0.17173137, -0.029112361, 0.9836284)
-bones/26/rotation = Quaternion(-0.06865546, 0.042276703, 0.2320871, 0.96934766)
-bones/27/rotation = Quaternion(-0.042348877, 0.023971453, 0.11744822, 0.991886)
+bones/26/rotation = Quaternion(-0.09827857, 0.06491044, 0.29421732, 0.94845355)
+bones/27/rotation = Quaternion(-0.077876315, 0.05933685, 0.20698224, 0.97343355)
 bones/28/rotation = Quaternion(0.32420725, -0.0230285, 0.24425343, 0.91361904)
 bones/29/rotation = Quaternion(-0.028548827, -0.027234968, -0.07998163, 0.99601525)
 bones/34/rotation = Quaternion(0.9952554, -0.009138531, 0.0016691636, 0.09685232)
@@ -296,5 +311,10 @@ anim_player = NodePath("../Visuals/AnimationPlayer")
 parameters/current_state/current_state = "idle"
 parameters/current_state/transition_request = ""
 parameters/current_state/current_index = 0
+
+[node name="Audio" type="Node3D" parent="." unique_id=319665602]
+
+[node name="JumpSfx" type="AudioStreamPlayer3D" parent="Audio" unique_id=926785661]
+stream = SubResource("AudioStreamRandomizer_u618n")
 
 [editable path="Visuals"]

@@ -9,7 +9,7 @@
 size = Vector3(2.40625, 0.79903185, 2.7705078)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6n56b"]
-size = Vector3(2.2460938, 0.17402343, 2.1210938)
+size = Vector3(2.2460938, 0.15231934, 2.1210938)
 
 [node name="PressurePad" type="Node3D" unique_id=1177825712 node_paths=PackedStringArray("pad")]
 script = ExtResource("1_6n56b")
@@ -33,7 +33,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005001068, -0.04212886, 0)
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PressurePad/Pad/StaticBody3D" unique_id=857259391]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03701172, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026159674, 0)
 shape = SubResource("BoxShape3D_6n56b")
 
 [node name="Base" parent="PressurePad" index="1" unique_id=1706673557]
