@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dmc3g0kk3alqt"]
+
+[ext_resource type="PackedScene" uid="uid://ckpasxlsfmkua" path="res://assets/models/props/puzzles/door_01_level_04.glb" id="1_5c405"]
+[ext_resource type="Script" uid="uid://8kud13uciqe1" path="res://scenes/world/props/door_01_level_03.gd" id="1_7cr15"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="2_igfc7"]
+
+[node name="Door_01_Level_03" type="Node3D" unique_id=790857764]
+script = ExtResource("1_7cr15")
+
+[node name="door_model" parent="." unique_id=922949542 instance=ExtResource("1_5c405")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Door_01_Level_04" parent="door_model" index="0" unique_id=1822259237]
+surface_material_override/0 = ExtResource("2_igfc7")
+
+[editable path="door_model"]

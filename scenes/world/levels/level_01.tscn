@@ -2,31 +2,48 @@
 
 [ext_resource type="PackedScene" uid="uid://ctc537bcs87aw" path="res://assets/models/world/level_01/level_01.glb" id="1_odbsn"]
 [ext_resource type="Material" uid="uid://cose651025u6t" path="res://assets/models/world/level_intro/WhiteConcreteTiled.tres" id="2_8y18y"]
+[ext_resource type="Material" uid="uid://c63vptg0kb5ns" path="res://assets/models/world/level_intro/ConcreteShortTiled.tres" id="2_ynxc0"]
 [ext_resource type="Material" uid="uid://dv5syvy628fql" path="res://assets/models/world/level_intro/ConcreteTiled.tres" id="3_3tp2u"]
+[ext_resource type="Material" uid="uid://c5stkp5owg2fn" path="res://assets/materials/Marble.tres" id="5_q6olp"]
 
 [node name="Level_01" type="Node3D" unique_id=724732184]
 
 [node name="Level_01" parent="." unique_id=1951181867 instance=ExtResource("1_odbsn")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 
-[node name="Cube_010 " parent="Level_01" index="0" unique_id=894727508]
+[node name="Cube_013" parent="Level_01" index="0" unique_id=747580959]
+surface_material_override/0 = ExtResource("2_ynxc0")
+
+[node name="stairs " parent="Level_01" index="2" unique_id=603731623]
+surface_material_override/0 = ExtResource("3_3tp2u")
+
+[node name="Cube_010 " parent="Level_01" index="3" unique_id=132832970]
 surface_material_override/0 = ExtResource("2_8y18y")
 
-[node name="Cube_010 _001" parent="Level_01" index="1" unique_id=1966323723]
+[node name="Cube_010 _001" parent="Level_01" index="4" unique_id=1654187925]
 surface_material_override/0 = ExtResource("2_8y18y")
 
-[node name="Cube_010 _002" parent="Level_01" index="2" unique_id=704408811]
+[node name="Cube_010 _002" parent="Level_01" index="5" unique_id=173992061]
 surface_material_override/0 = ExtResource("2_8y18y")
 
-[node name="Cube_011 " parent="Level_01" index="3" unique_id=678118570]
+[node name="Cube_011 " parent="Level_01" index="6" unique_id=605078547]
 surface_material_override/0 = ExtResource("2_8y18y")
 
-[node name="Ground" parent="Level_01" index="4" unique_id=461249939]
+[node name="Cube_011 _001" parent="Level_01" index="7" unique_id=1211343643]
 surface_material_override/0 = ExtResource("2_8y18y")
 
-[node name="LevelBase " parent="Level_01" index="5" unique_id=1617166821]
+[node name="Ground" parent="Level_01" index="8" unique_id=2029809931]
+surface_material_override/0 = ExtResource("2_8y18y")
+
+[node name="LevelBase " parent="Level_01" index="9" unique_id=1627974671]
 cast_shadow = 2
 surface_material_override/0 = ExtResource("3_3tp2u")
 surface_material_override/1 = ExtResource("2_8y18y")
+surface_material_override/2 = ExtResource("5_q6olp")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1952242554]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 8, -92)
+light_energy = 1.96
+omni_range = 5.683
 
 [editable path="Level_01"]

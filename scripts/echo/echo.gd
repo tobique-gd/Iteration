@@ -61,6 +61,7 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if state == State.PLAYING:
+		stamina = 100.0
 		if recording == null:
 			finish_playback()
 		else:

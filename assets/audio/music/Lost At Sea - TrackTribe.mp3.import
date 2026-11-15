@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1ruci2km1fw3"
+path="res://.godot/imported/Lost At Sea - TrackTribe.mp3-244a8cd70f7316bb4670540610022cee.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Lost At Sea - TrackTribe.mp3"
+dest_files=["res://.godot/imported/Lost At Sea - TrackTribe.mp3-244a8cd70f7316bb4670540610022cee.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

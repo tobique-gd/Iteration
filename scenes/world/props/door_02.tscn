@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://crgcimsqhg5ll"]
+
+[ext_resource type="PackedScene" uid="uid://cemb1up1gr3lg" path="res://assets/models/props/puzzles/puzzle_01/door_01/door_01.glb" id="1_qcqbp"]
+[ext_resource type="Script" uid="uid://c5m3u2j4m64p3" path="res://scenes/world/props/door_02.gd" id="1_u0l25"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="3_6th6g"]
+[ext_resource type="Material" uid="uid://c5stkp5owg2fn" path="res://assets/materials/Marble.tres" id="4_nidhj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u0l25"]
+size = Vector3(2, 4.3840404, 7.2701225)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mivov"]
+size = Vector3(2, 4.3840404, 7.2701225)
+
+[node name="Door02" type="Node3D" unique_id=309172189 node_paths=PackedStringArray("animation_player")]
+script = ExtResource("1_u0l25")
+animation_player = NodePath("Level_01_Door_01/AnimationPlayer")
+
+[node name="Level_01_Door_01" parent="." unique_id=90157188 instance=ExtResource("1_qcqbp")]
+
+[node name="Puzzle_Door_01_L01_P1" parent="Level_01_Door_01" index="0" unique_id=67412585]
+transform = Transform3D(0.44936323, 0, 0, 0, 1, 0, 0, 0, 1, -96.68895, 8.420846, 6.7262855)
+surface_material_override/0 = ExtResource("3_6th6g")
+surface_material_override/1 = ExtResource("4_nidhj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level_01_Door_01/Puzzle_Door_01_L01_P1" index="0" unique_id=1197876418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.1920202, -0.0036554337)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_01_Door_01/Puzzle_Door_01_L01_P1/StaticBody3D" unique_id=1987741626]
+shape = SubResource("BoxShape3D_u0l25")
+
+[node name="Puzzle_Door_01_L01_P2" parent="Level_01_Door_01" index="1" unique_id=2094641607]
+transform = Transform3D(0.44936323, 0, 0, 0, 1, 0, 0, 0, 1, -96.68895, 8.420846, 6.7262855)
+surface_material_override/0 = ExtResource("3_6th6g")
+surface_material_override/1 = ExtResource("4_nidhj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level_01_Door_01/Puzzle_Door_01_L01_P2" index="0" unique_id=1363387013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1920202, -0.0036554337)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_01_Door_01/Puzzle_Door_01_L01_P2/StaticBody3D" unique_id=1811423441]
+shape = SubResource("BoxShape3D_mivov")
+
+[editable path="Level_01_Door_01"]

@@ -4,13 +4,121 @@
 [ext_resource type="Script" uid="uid://dexhmjrjcm35a" path="res://scenes/world/world.gd" id="1_bq33v"]
 [ext_resource type="Script" uid="uid://bool4h78lq4mc" path="res://scenes/world/audio_node.gd" id="1_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://b3u5valcbmu6o" path="res://scenes/entities/player/player_entity.tscn" id="1_v5dby"]
+[ext_resource type="Script" uid="uid://dymwuqtg4wqo5" path="res://scenes/world/new_ability_unlock.gd" id="2_t634p"]
+[ext_resource type="FontFile" uid="uid://cc8yx0mjws800" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskRegular.ttf" id="2_wbwoo"]
+[ext_resource type="FontFile" uid="uid://demf3eyx4f7nb" path="res://assets/fonts/alte_haas_grotesk/AlteHaasGroteskBold.ttf" id="3_tytul"]
 [ext_resource type="Shader" uid="uid://d1acg20addguq" path="res://assets/shaders/wind/cloth_wind.gdshader" id="4_6m72w"]
 [ext_resource type="PackedScene" uid="uid://bpru1gi3ee7eb" path="res://scenes/interaction/player_trigger_zone.tscn" id="4_bq33v"]
 [ext_resource type="PackedScene" uid="uid://bo1mx5yxxfmcm" path="res://assets/models/world/level_intro/intro.gltf" id="6_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://dflsoybt72huy" path="res://scenes/world/props/pressure_pad.tscn" id="8_j2gmx"]
 [ext_resource type="Script" uid="uid://ca6bulouspoys" path="res://scripts/mechanisms/mechanism_controller.gd" id="9_1yooq"]
 [ext_resource type="PackedScene" uid="uid://d3s4wnmlwbps" path="res://scenes/world/levels/level_01.tscn" id="11_5qq27"]
+[ext_resource type="PackedScene" uid="uid://crgcimsqhg5ll" path="res://scenes/world/props/door_02.tscn" id="12_dlabj"]
+[ext_resource type="PackedScene" uid="uid://dsvm4i1jwro00" path="res://scenes/world/props/tether.tscn" id="13_srmg5"]
+[ext_resource type="PackedScene" uid="uid://c2kjjdtdkxety" path="res://scenes/world/props/door_02_level_01.tscn" id="13_umvgx"]
 [ext_resource type="PackedScene" uid="uid://b7ow43hs1yjeg" path="res://scenes/world/props/door_01_puzzle_00.tscn" id="14_umvgx"]
+[ext_resource type="PackedScene" uid="uid://dui1smivds8qw" path="res://assets/models/world/level_02/level_02.glb" id="15_mxkvs"]
+[ext_resource type="Material" uid="uid://c5stkp5owg2fn" path="res://assets/materials/Marble.tres" id="16_m114p"]
+[ext_resource type="Material" uid="uid://dv5syvy628fql" path="res://assets/models/world/level_intro/ConcreteTiled.tres" id="17_71ii3"]
+[ext_resource type="PackedScene" uid="uid://beqomujvko2gt" path="res://scenes/world/props/bridge_piece.tscn" id="22_6hctx"]
+[ext_resource type="PackedScene" uid="uid://c4rfq6bwgoy0y" path="res://assets/models/world/level_03/level_03.glb" id="22_ues17"]
+[ext_resource type="Material" uid="uid://cose651025u6t" path="res://assets/models/world/level_intro/WhiteConcreteTiled.tres" id="23_ues17"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="24_x0nq1"]
+[ext_resource type="PackedScene" uid="uid://jxbf7um6xmvi" path="res://scenes/world/props/single_moving_platform.tscn" id="26_ckok1"]
+[ext_resource type="PackedScene" uid="uid://dmc3g0kk3alqt" path="res://scenes/world/props/door_01_level_03.tscn" id="26_rwifv"]
+[ext_resource type="PackedScene" uid="uid://due7r7ejjplp6" path="res://scenes/world/props/cube_holder.tscn" id="27_ckok1"]
+[ext_resource type="PackedScene" uid="uid://bfui2ts8lv3ki" path="res://scenes/world/props/power_cube.tscn" id="28_2x71e"]
+[ext_resource type="PackedScene" uid="uid://cciyyqwu8khqf" path="res://assets/models/world/level_04/level_04.glb" id="29_wnndm"]
+[ext_resource type="Material" uid="uid://c63vptg0kb5ns" path="res://assets/models/world/level_intro/ConcreteShortTiled.tres" id="30_26xou"]
+[ext_resource type="Script" uid="uid://cgbpcbynwqlsp" path="res://scenes/world/door_01_level_04_001_.gd" id="30_fymcc"]
+[ext_resource type="Shader" uid="uid://caj8jwhbvotcg" path="res://scenes/world/pulse.gdshader" id="31_5o5dd"]
+[ext_resource type="Script" uid="uid://dnvbfq53xr4l5" path="res://scenes/world/spin.gd" id="32_d0ajt"]
+[ext_resource type="PackedScene" uid="uid://bgxyvhe3awbxf" path="res://assets/models/props/puzzles/door_HSFUI.glb" id="33_d0ajt"]
+
+[sub_resource type="Animation" id="Animation_t634p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewAbility:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(184, -83)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewAbility:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NewAbility:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tytul"]
+resource_name = "new_ability"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewAbility:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3666667, 5.5000005, 6.5000005),
+"transitions": PackedFloat32Array(0.4061261, 3.031433, 3.031433, 0.4061261),
+"update": 0,
+"values": [Vector2(184, -83), Vector2(184, 0), Vector2(184, 0), Vector2(184, -83)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewAbility:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.96666664, 2.0666666, 2.6666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.795, 0.795, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NewAbility:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 5.8333335, 6.366667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t634p"]
+_data = {
+&"RESET": SubResource("Animation_t634p"),
+&"new_ability": SubResource("Animation_tytul")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6m72w"]
 shader = ExtResource("1_1fp7r")
@@ -42,17 +150,149 @@ ssao_radius = 8.52
 ssao_intensity = 10.12
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 0.5
 glow_bloom = 0.4
 fog_enabled = true
 fog_light_color = Color(0.1944, 0.23316, 0.24, 1)
 fog_light_energy = 1.32
-fog_density = 0.0165
+fog_density = 0.033
 fog_aerial_perspective = 0.5
 fog_sky_affect = 0.403
+fog_height_density = 0.2734
 adjustment_brightness = 0.84
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bq33v"]
 size = Vector3(26.69043, 4.876953, 11.694336)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tytul"]
+size = Vector3(27, 7, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t634p"]
+size = Vector3(177, 15.95, 150)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5o5dd"]
+size = Vector3(3.4, 5.86, 12.36)
+
+[sub_resource type="Animation" id="Animation_5o5dd"]
+resource_name = "End"
+length = 25.0
+step = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Entities/PlayerEntity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 14, 25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"trigger_end"
+}, {
+"args": [],
+"method": &"end_life"
+}, {
+"args": [],
+"method": &"reset_game"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/Camera3D7:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(288.6, 38, -190), Vector3(288.6, 40.25, -190)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/Camera3D7:current")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/Camera3D8:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cameras/Camera3D8:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.5, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(270.7809, 39.223938, -208.2), Vector3(273.6, 40.25, -208.2)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Levels/Level_04/Level_04/Icosphere:progress")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3.5, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/Camera3D9:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(12, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(296.84372, 39.25672, -206.4), Vector3(293.2437, 39.25672, -206.4)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cameras/Camera3D9:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(12),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/Black:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_1fp7r"]
 resource_name = "Intro"
@@ -404,7 +644,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -428,7 +668,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -466,9 +706,106 @@ tracks/14/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Cameras/Camera3D7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(288.6, 38, -190)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Cameras/Camera3D7:current")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Cameras/Camera3D8:current")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Cameras/Camera3D8:position")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(270.7809, 39.223938, -208.2)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Levels/Level_04/Level_04/Icosphere:progress")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Cameras/Camera3D9:position")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(296.84372, 39.25672, -206.4)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Cameras/Camera3D9:current")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("UI/Black:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6m72w"]
 _data = {
+&"End": SubResource("Animation_5o5dd"),
 &"Intro": SubResource("Animation_1fp7r"),
 &"RESET": SubResource("Animation_6m72w")
 }
@@ -500,6 +837,12 @@ shader_parameter/wind_speed = 0.33
 shader_parameter/twist_strength = 0.0
 shader_parameter/wind_axis = Vector3(-5, -0.47, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fymcc"]
+render_priority = 0
+shader = ExtResource("31_5o5dd")
+shader_parameter/emission_color = Color(1, 0, 0, 1)
+shader_parameter/completed_color = Color(0.5141, 0.97, 0.87882, 1)
+
 [node name="World" type="Node3D" unique_id=298276808 node_paths=PackedStringArray("intro_level_animation_player", "cutscenes")]
 script = ExtResource("1_bq33v")
 intro_level_animation_player = NodePath("Levels/Level_00/IntroLevel/AnimationPlayer")
@@ -517,6 +860,71 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.98039216, 0.98039216, 0.98039216, 1)
 
+[node name="Black" type="ColorRect" parent="UI" unique_id=272871919]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.06879827, 0.06879828, 0.06879828, 1)
+
+[node name="Label" type="Label" parent="UI/Black" unique_id=253792201]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -11.5
+offset_right = 72.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_wbwoo")
+theme_override_font_sizes/font_size = 24
+text = "Death is mandatory."
+
+[node name="NewAbilityUnlock" type="Control" parent="UI" unique_id=1393415321 node_paths=PackedStringArray("tether")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_t634p")
+tether = NodePath("../../Levels/Level_01/Tether")
+
+[node name="NewAbility" type="RichTextLabel" parent="UI/NewAbilityUnlock" unique_id=2020103767]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -776.0
+offset_top = -83.0
+offset_right = 776.0
+offset_bottom = 130.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("2_wbwoo")
+theme_override_fonts/bold_font = ExtResource("3_tytul")
+theme_override_font_sizes/normal_font_size = 72
+theme_override_font_sizes/bold_font_size = 72
+bbcode_enabled = true
+text = "New ability unlocked: [b]Recall[/b]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_characters_behavior = 1
+visible_ratio = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/NewAbilityUnlock" unique_id=1394517586]
+libraries/ = SubResource("AnimationLibrary_t634p")
+
 [node name="AudioNode" type="Node" parent="." unique_id=813726157]
 script = ExtResource("1_t5ptc")
 
@@ -530,6 +938,7 @@ transform = Transform3D(0.13643152, -0.5545124, 0.82091564, -0.021650447, 0.8267
 light_color = Color(1, 0.98583335, 0.95, 1)
 light_energy = 0.65
 shadow_enabled = true
+directional_shadow_max_distance = 1024.0
 directional_shadow_pancake_size = 50.0
 
 [node name="ReflectionProbe" type="ReflectionProbe" parent="Environment" unique_id=1938116626]
@@ -539,8 +948,29 @@ ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
 ambient_color_energy = 0.2
 
 [node name="ReflectionProbe2" type="ReflectionProbe" parent="Environment" unique_id=841109680]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -75.43779)
-size = Vector3(78.40259, 44.678833, 46)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.444153, -74.75102)
+size = Vector3(78.40259, 44.678833, 44.626465)
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="ReflectionProbe3" type="ReflectionProbe" parent="Environment" unique_id=780276643]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.701294, 20.28357, -147.43779)
+size = Vector3(53, 37, 104)
+box_projection = true
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="ReflectionProbe4" type="ReflectionProbe" parent="Environment" unique_id=1360045380]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29870605, 3.2835693, -210.43779)
+size = Vector3(33, 71, 24)
+enable_shadows = true
+ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
+ambient_color_energy = 0.2
+
+[node name="ReflectionProbe5" type="ReflectionProbe" parent="Environment" unique_id=772100539]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.298706, 9.783569, -205.43779)
+size = Vector3(137, 58, 150)
+enable_shadows = true
 ambient_color = Color(0.20891115, 0.27438143, 0.32330084, 1)
 ambient_color_energy = 0.2
 
@@ -560,6 +990,47 @@ arguments = ["Press [icon:jump:64] to jump.", 5.0]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4586465, 3.826601)
 shape = SubResource("BoxShape3D_bq33v")
 
+[node name="PlayerTriggerZone2" parent="InteractionZones" unique_id=1796731169 instance=ExtResource("4_bq33v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 7.5, -147)
+autoload_name = "AudioManager"
+on_enter_called_function_name = "stop"
+arguments = []
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractionZones/PlayerTriggerZone2" unique_id=1814255330]
+shape = SubResource("BoxShape3D_tytul")
+
+[node name="PlayerTriggerZone5" parent="InteractionZones" unique_id=1135349419 instance=ExtResource("4_bq33v")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 229, 13, -204)
+autoload_name = "AudioManager"
+on_enter_called_function_name = "play_music"
+arguments = ["Lost At Sea"]
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractionZones/PlayerTriggerZone5" unique_id=1641942350]
+shape = SubResource("BoxShape3D_tytul")
+
+[node name="PlayerTriggerZone3" parent="InteractionZones" unique_id=318952540 instance=ExtResource("4_bq33v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, 2, -207)
+autoload_name = "WorldManager"
+use_body_as_args = true
+on_enter_called_function_name = "respawn_player"
+arguments = []
+one_shot = false
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractionZones/PlayerTriggerZone3" unique_id=484986953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, -20.400002, 0)
+shape = SubResource("BoxShape3D_t634p")
+
+[node name="PlayerTriggerZone4" parent="InteractionZones" unique_id=88275482 instance=ExtResource("4_bq33v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289, 40, -206)
+use_autoload = false
+node_to_call = NodePath("../../Cameras/Cutscenes")
+on_enter_called_function_name = "play"
+arguments = ["End"]
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractionZones/PlayerTriggerZone4" unique_id=71895030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("BoxShape3D_5o5dd")
+
 [node name="Cameras" type="Node" parent="." unique_id=445746296]
 
 [node name="Cutscenes" type="AnimationPlayer" parent="Cameras" unique_id=1479005614]
@@ -568,7 +1039,7 @@ libraries/ = SubResource("AnimationLibrary_6m72w")
 autoplay = &"Intro"
 
 [node name="Camera3D" type="Camera3D" parent="Cameras" unique_id=314545714]
-transform = Transform3D(1, 0, 0, 0, 0.9547608, -0.29737487, 0, 0.29737487, 0.9547608, 0, 0.513, 23.403)
+transform = Transform3D(1, 0, 0, 0, 0.9547607, -0.29737484, 0, 0.29737484, 0.9547607, 0, 0.513, 23.403)
 current = true
 fov = 55.0
 
@@ -583,17 +1054,27 @@ fov = 50.0
 
 [node name="Camera3D4" type="Camera3D" parent="Cameras" unique_id=1065481396]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.8575196, 1.597086, 20.48325)
-current = true
 fov = 45.0
 
 [node name="Camera3D5" type="Camera3D" parent="Cameras" unique_id=630090270]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -30.862, 14.51, -29.698)
-current = true
 fov = 65.0
 
 [node name="Camera3D6" type="Camera3D" parent="Cameras" unique_id=96649952]
 transform = Transform3D(-0.73845524, -0.21730454, -0.63832784, 0, 0.9466492, -0.32226568, 0.6743024, -0.2379788, -0.6990581, -8.927, 3.981, 17.73)
 fov = 45.0
+
+[node name="Camera3D7" type="Camera3D" parent="Cameras" unique_id=1596872744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288.6, 38, -190)
+fov = 60.4
+
+[node name="Camera3D8" type="Camera3D" parent="Cameras" unique_id=1852081928]
+transform = Transform3D(-4.371139e-08, -0.34202015, -0.9396926, 0, 0.9396926, -0.34202015, 1, -1.4950176e-08, -4.1075268e-08, 270.7809, 39.223938, -208.2)
+fov = 72.4
+
+[node name="Camera3D9" type="Camera3D" parent="Cameras" unique_id=593927949]
+transform = Transform3D(-4.3545054e-08, 0.08715574, 0.9961947, 3.8096983e-09, 0.9961947, -0.08715574, -1, 4.440892e-16, -4.371139e-08, 296.84372, 39.25672, -206.4)
+fov = 54.7
 
 [node name="Entities" type="Node" parent="." unique_id=170325699]
 
@@ -604,20 +1085,72 @@ cutscene_camera_intro = NodePath("../../Cameras/Camera3D")
 [node name="CamPivot" parent="Entities/PlayerEntity" index="3" unique_id=1614067786]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, 13.5)
 
-[node name="Skeleton3D" parent="Entities/PlayerEntity/Visuals/metarig" parent_id_path=PackedInt32Array(337366621, 2129848831, 1758575231) index="0" unique_id=974597475]
-bones/3/rotation = Quaternion(-0.08848419, 2.3751204e-07, 3.420856e-05, 0.99607766)
-bones/4/rotation = Quaternion(0.023657732, 6.401252e-05, -5.011769e-05, 0.99972016)
-bones/6/rotation = Quaternion(0.015764682, 0.014351424, -0.0028806985, 0.9997686)
-bones/14/rotation = Quaternion(-0.60891175, -0.33879966, -0.36280325, 0.61872065)
-bones/15/rotation = Quaternion(-0.28277737, 0.69239056, -0.5243274, 0.40707877)
-bones/16/rotation = Quaternion(0.18305269, 0.032758866, -0.06406683, 0.9804662)
-bones/18/rotation = Quaternion(-0.056923088, -0.04975086, -0.25426683, 0.96417487)
-bones/19/rotation = Quaternion(-0.025352556, -0.011550387, -0.09124679, 0.9954386)
-bones/22/rotation = Quaternion(-0.6088223, 0.33905208, 0.36254752, 0.61882025)
-bones/23/rotation = Quaternion(-0.29481563, -0.6900535, 0.5265819, 0.39952654)
-bones/24/rotation = Quaternion(0.19163485, -0.04163609, 0.035067003, 0.97995555)
-bones/26/rotation = Quaternion(-0.061998907, 0.03605287, 0.21883805, 0.97312194)
-bones/27/rotation = Quaternion(-0.03446381, 0.013712138, 0.09752906, 0.9945412)
+[node name="Skeleton3D" parent="Entities/PlayerEntity/Visuals/metarig" parent_id_path=PackedInt32Array(337366621, 2129848831, 131143612) index="0" unique_id=1701055486]
+bones/2/rotation = Quaternion(-0.049551845, 1.4581131e-08, -3.8735735e-09, 0.99877155)
+bones/3/position = Vector3(2.6645353e-15, 0.11610884, -3.7252874e-09)
+bones/3/rotation = Quaternion(-0.08984047, 3.8495273e-07, 5.3220487e-05, 0.99595624)
+bones/4/position = Vector3(-3.7747583e-15, 0.14776759, 4.656614e-09)
+bones/4/rotation = Quaternion(0.02115627, 0.00021044447, -0.00016478248, 0.99977624)
+bones/5/position = Vector3(-4.3032244e-12, 0.1641732, 7.9723075e-05)
+bones/5/rotation = Quaternion(0.09240394, 2.830548e-08, 7.613575e-09, 0.9957216)
+bones/6/position = Vector3(6.661338e-15, 0.053073645, -1.8626432e-09)
+bones/6/rotation = Quaternion(0.016980499, 0.05269997, 0.004261591, 0.99845695)
+bones/7/rotation = Quaternion(-0.06713453, -1.9511901e-08, -6.730441e-09, 0.997744)
+bones/8/position = Vector3(0.16124749, 0.116853975, -0.023651706)
+bones/9/position = Vector3(0.0044646827, 0.0012810024, 0.07461393)
+bones/10/position = Vector3(-0.07262339, 0.0016154347, 0.025797445)
+bones/11/position = Vector3(-0.16124749, 0.116853975, -0.023651734)
+bones/14/position = Vector3(0.015600749, 0.11694889, 0.06676573)
+bones/14/rotation = Quaternion(-0.605284, -0.3449919, -0.35695365, 0.62225085)
+bones/15/position = Vector3(0.0066422937, 0.17117435, -0.017378088)
+bones/15/rotation = Quaternion(-0.29154107, 0.68933094, -0.5188715, 0.41303656)
+bones/16/position = Vector3(9.546056e-09, 0.27432853, -1.3969839e-09)
+bones/16/rotation = Quaternion(0.19322215, 0.045072515, -0.06553827, 0.9779256)
+bones/17/position = Vector3(-4.964204e-08, 0.23231232, -6.4028427e-10)
+bones/17/rotation = Quaternion(-0.046218555, -0.17173141, 0.029112328, 0.9836284)
+bones/18/position = Vector3(7.951894e-08, 0.082908414, -2.561137e-09)
+bones/18/rotation = Quaternion(-0.054364752, -0.031378023, -0.20193757, 0.9773849)
+bones/19/position = Vector3(-2.9467628e-08, 0.033690345, -1.8626451e-09)
+bones/19/rotation = Quaternion(-0.023686625, 0.004776122, -0.022058355, 0.9994647)
+bones/20/position = Vector3(0.015135731, 0.033079896, 0.015512823)
+bones/20/rotation = Quaternion(0.32420725, 0.023028513, -0.24425355, 0.9136189)
+bones/21/rotation = Quaternion(-0.028548852, 0.027235063, 0.07998167, 0.99601525)
+bones/22/position = Vector3(-0.015600759, 0.11694889, 0.06676574)
+bones/22/rotation = Quaternion(-0.6040703, 0.34683764, 0.35673526, 0.62252927)
+bones/23/position = Vector3(-0.0066422764, 0.17117433, -0.01737812)
+bones/23/rotation = Quaternion(-0.28554446, -0.69116855, 0.5238475, 0.40784094)
+bones/24/position = Vector3(2.7939677e-08, 0.27432865, 1.3969839e-09)
+bones/24/rotation = Quaternion(0.18058765, -0.03447476, 0.06649596, 0.98070276)
+bones/25/position = Vector3(-3.230707e-08, 0.23231243, 2.9685907e-09)
+bones/25/rotation = Quaternion(-0.046218567, 0.17173137, -0.029112361, 0.9836284)
+bones/26/position = Vector3(-1.45009835e-08, 0.08290836, -2.3283064e-10)
+bones/26/rotation = Quaternion(-0.11447089, 0.07730733, 0.32796252, 0.9345377)
+bones/27/position = Vector3(1.2363307e-07, 0.033690378, 9.313226e-10)
+bones/27/rotation = Quaternion(-0.097186945, 0.078644395, 0.25559762, 0.95866555)
+bones/28/position = Vector3(-0.015135613, 0.033079855, 0.015512827)
+bones/28/rotation = Quaternion(0.32420725, -0.0230285, 0.24425343, 0.91361904)
+bones/29/position = Vector3(-8.195639e-08, 0.045781422, 1.8626451e-08)
+bones/29/rotation = Quaternion(-0.028548827, -0.027234968, -0.07998163, 0.99601525)
+bones/30/position = Vector3(0.10093602, -0.0041430467, -0.03645222)
+bones/31/position = Vector3(-0.100936, -0.0041430467, -0.036452226)
+bones/32/position = Vector3(2.6645353e-15, 9.313225e-09, -3.7252943e-09)
+bones/33/position = Vector3(-5.494778e-10, 9.313225e-09, -3.7252943e-09)
+bones/34/position = Vector3(0.1111743, 0.06912173, 0.023675896)
+bones/34/rotation = Quaternion(0.9952554, -0.009138531, 0.0016691636, 0.09685232)
+bones/35/position = Vector3(-8.18909e-09, 0.3730935, -7.712515e-10)
+bones/35/rotation = Quaternion(0.0052596736, -0.0012552348, -0.004814026, 0.9999739)
+bones/36/position = Vector3(7.125891e-10, 0.38881636, -3.4924597e-10)
+bones/36/rotation = Quaternion(-0.38888425, 0.001312771, -0.003600538, 0.9212787)
+bones/37/position = Vector3(5.0677045e-09, 0.08782435, 8.643838e-09)
+bones/38/position = Vector3(-0.032301106, 0.04300332, 0.05483965)
+bones/39/position = Vector3(-0.111174285, 0.06912173, 0.023675881)
+bones/39/rotation = Quaternion(0.9952554, 0.009138515, -0.0016691074, 0.09685232)
+bones/40/position = Vector3(5.0986273e-09, 0.37309355, 5.820766e-11)
+bones/40/rotation = Quaternion(0.005259679, 0.0012553334, 0.004814012, 0.9999739)
+bones/41/rotation = Quaternion(-0.38888422, -0.0013128587, 0.0036004854, 0.92127866)
+bones/42/position = Vector3(2.040906e-09, 0.08782434, 1.1204975e-09)
+bones/42/rotation = Quaternion(0.00024873653, 0.9568803, -0.2904813, 0.00081954425)
+bones/43/position = Vector3(0.032301106, 0.043003313, 0.05483963)
 
 [node name="Levels" type="Node" parent="." unique_id=1781002574]
 
@@ -693,6 +1226,217 @@ mechanism_controller = NodePath("../MechanismController")
 [node name="PressurePad" parent="Levels/Level_01" unique_id=472405735 instance=ExtResource("8_j2gmx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7000003, 4.619, -94.5)
 
+[node name="Door02" parent="Levels/Level_01" unique_id=309172189 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("12_dlabj")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mechanism_controller = NodePath("../MechanismController")
+
+[node name="MechanismController" type="Node" parent="Levels/Level_01" unique_id=1813131883 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad")]
+minimum_inputs = 1
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Levels/Level_01" unique_id=435660015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 10, -127.6)
+visible = false
+light_color = Color(0.50381345, 0.8239385, 0.9361793, 1)
+light_energy = 5.672
+omni_range = 16.006
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Levels/Level_01" unique_id=1114503930]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 12, -139.5)
+visible = false
+light_color = Color(0.50381345, 0.8239385, 0.9361793, 1)
+light_energy = 2.385
+omni_range = 10.399
+omni_attenuation = 0.5
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Levels/Level_01" unique_id=645993292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 12, -156)
+visible = false
+light_color = Color(0.50381345, 0.8239385, 0.9361793, 1)
+light_energy = 2.385
+omni_range = 10.399
+omni_attenuation = 0.5
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Levels/Level_01" unique_id=1095684882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 12, -168)
+visible = false
+light_color = Color(0.50381345, 0.8239385, 0.9361793, 1)
+light_energy = 2.385
+omni_range = 10.399
+omni_attenuation = 0.5
+
+[node name="Puzzle_02" type="Node3D" parent="Levels/Level_01" unique_id=796543546]
+
+[node name="PressurePad2" parent="Levels/Level_01/Puzzle_02" unique_id=1038470513 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 7.7999997, -192.1)
+
+[node name="PressurePad3" parent="Levels/Level_01/Puzzle_02" unique_id=1195081758 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 7.7999997, -192.1)
+
+[node name="Door_02_Level_01" parent="Levels/Level_01/Puzzle_02" unique_id=1726654365 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("13_umvgx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+mechanism_controller = NodePath("../MechanismController")
+
+[node name="MechanismController" type="Node" parent="Levels/Level_01/Puzzle_02" unique_id=1525602757 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad2"), NodePath("../PressurePad3")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="Tether" parent="Levels/Level_01" unique_id=2004416978 instance=ExtResource("13_srmg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.8, 9.15075, -183.6)
+spawn_offset = Vector3(0.5, 0, 2)
+unlock_recall = true
+
+[node name="Level_02" type="Node3D" parent="Levels" unique_id=683727392]
+
+[node name="Level_02" parent="Levels/Level_02" unique_id=2113111558 instance=ExtResource("15_mxkvs")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Block _014" parent="Levels/Level_02/Level_02" index="0" unique_id=1459748976]
+surface_material_override/0 = ExtResource("16_m114p")
+
+[node name="Block" parent="Levels/Level_02/Level_02" index="1" unique_id=1356999593]
+surface_material_override/0 = ExtResource("16_m114p")
+
+[node name="LevelBase _002" parent="Levels/Level_02/Level_02" index="2" unique_id=27948409]
+cast_shadow = 2
+surface_material_override/0 = ExtResource("17_71ii3")
+
+[node name="PressurePad" parent="Levels/Level_02" unique_id=977617500 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.1, 3.4051585, -250.4)
+
+[node name="PressurePad2" parent="Levels/Level_02" unique_id=846935098 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.9, 6.111941, -165.59999)
+
+[node name="PressurePad3" parent="Levels/Level_02" unique_id=800846629 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.9, 5.2698665, -171.79999)
+
+[node name="BridgePiece" parent="Levels/Level_02" unique_id=949062312 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("22_6hctx")]
+mechanism_controller = NodePath("../MechanismController2")
+
+[node name="BridgePiece2" parent="Levels/Level_02" unique_id=937425906 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("22_6hctx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.459, 0, 0)
+mechanism_controller = NodePath("../MechanismController")
+
+[node name="BridgePiece3" parent="Levels/Level_02" unique_id=2097037830 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("22_6hctx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.918, 0, 0)
+mechanism_controller = NodePath("../MechanismController3")
+
+[node name="MechanismController" type="Node" parent="Levels/Level_02" unique_id=1430256497 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="MechanismController2" type="Node" parent="Levels/Level_02" unique_id=758908089 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad2")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="MechanismController3" type="Node" parent="Levels/Level_02" unique_id=162583205 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad3")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="Level_03" type="Node3D" parent="Levels" unique_id=316095123]
+
+[node name="Tether" parent="Levels/Level_03" unique_id=1367340795 instance=ExtResource("13_srmg5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.59999, 9.580197, -206.6)
+
+[node name="Level_03" parent="Levels/Level_03" unique_id=62061189 instance=ExtResource("22_ues17")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="LevelBase _003" parent="Levels/Level_03/Level_03" index="0" unique_id=302181307]
+cast_shadow = 2
+surface_material_override/0 = ExtResource("17_71ii3")
+surface_material_override/1 = ExtResource("23_ues17")
+surface_material_override/2 = ExtResource("24_x0nq1")
+
+[node name="PressurePad" parent="Levels/Level_03" unique_id=1928244937 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 8.172152, -210.7)
+
+[node name="PressurePad2" parent="Levels/Level_03" unique_id=1001146727 instance=ExtResource("8_j2gmx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 186, 8.172152, -202.7)
+
+[node name="Door_01_Level_03" parent="Levels/Level_03" unique_id=790857764 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("26_rwifv")]
+mechanism_controller = NodePath("../MechanismController")
+
+[node name="MechanismController" type="Node" parent="Levels/Level_03" unique_id=1766498740 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="SingleMovingPlatform" parent="Levels/Level_03" unique_id=1254646724 node_paths=PackedStringArray("mechanism_controller") instance=ExtResource("26_ckok1")]
+mechanism_controller = NodePath("../MechanismController2")
+
+[node name="MechanismController2" type="Node" parent="Levels/Level_03" unique_id=1106197755 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../PressurePad2")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="CubeHolder" parent="Levels/Level_03" unique_id=152295284 instance=ExtResource("27_ckok1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 187, 10.460041, -243)
+store_cube = true
+
+[node name="PowerCube" parent="Levels/Level_03/CubeHolder" unique_id=1320291442 instance=ExtResource("28_2x71e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.90000004, 0)
+
+[node name="CubeHolder2" parent="Levels/Level_03" unique_id=1207751577 instance=ExtResource("27_ckok1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209, 25.267572, -179)
+
+[node name="export_single" parent="Levels/Level_03" unique_id=745178579 instance=ExtResource("33_d0ajt")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Door_01_Level_04_001 " parent="Levels/Level_03/export_single" index="0" unique_id=1174770768 node_paths=PackedStringArray("mechanism_controller")]
+surface_material_override/0 = ExtResource("24_x0nq1")
+script = ExtResource("30_fymcc")
+mechanism_controller = NodePath("../../MechanismController3")
+open_y = -24.0
+
+[node name="MechanismController3" type="Node" parent="Levels/Level_03" unique_id=654876704 node_paths=PackedStringArray("inputs")]
+script = ExtResource("9_1yooq")
+inputs = [NodePath("../CubeHolder2")]
+metadata/_custom_type_script = "uid://ca6bulouspoys"
+
+[node name="Level_04" type="Node3D" parent="Levels" unique_id=1620481624]
+
+[node name="Level_04" parent="Levels/Level_04" unique_id=1329314141 instance=ExtResource("29_wnndm")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Cylinder_001" parent="Levels/Level_04/Level_04" index="0" unique_id=54795169]
+surface_material_override/0 = ExtResource("30_26xou")
+
+[node name="Icosphere" parent="Levels/Level_04/Level_04" index="1" unique_id=296550383]
+transform = Transform3D(-0.08100577, -0.70905095, -0.4548657, 0.79312974, -0.21866004, 0.19954634, -0.28463683, -0.40702096, 0.6852342, -206.13702, 49.08841, -295.35553)
+instance_shader_parameters/blink_intensity = 4.0
+instance_shader_parameters/blink_speed = 12.0
+instance_shader_parameters/chaos_speed = 5.0
+instance_shader_parameters/flicker_amount = 0.1
+instance_shader_parameters/min_intensity = 0.05
+instance_shader_parameters/progress = 0.0
+surface_material_override/0 = SubResource("ShaderMaterial_fymcc")
+surface_material_override/1 = ExtResource("17_71ii3")
+script = ExtResource("32_d0ajt")
+rotation_speed = 10.0
+wobble_speed = 6.71
+wobble_amount = 0.5
+float_height = 0.747
+float_speed = 1.669
+
+[node name="Cube_011 _002" parent="Levels/Level_04/Level_04" index="2" unique_id=737524557]
+surface_material_override/0 = ExtResource("23_ues17")
+
+[node name="LevelBase _004" parent="Levels/Level_04/Level_04" index="3" unique_id=1069195118]
+cast_shadow = 2
+surface_material_override/0 = ExtResource("17_71ii3")
+
+[connection signal="animation_finished" from="UI/NewAbilityUnlock/AnimationPlayer" to="UI/NewAbilityUnlock" method="_on_animation_player_animation_finished"]
+
 [editable path="Entities/PlayerEntity"]
 [editable path="Entities/PlayerEntity/Visuals"]
 [editable path="Levels/Level_00/IntroLevel"]
+[editable path="Levels/Level_02/Level_02"]
+[editable path="Levels/Level_03/Level_03"]
+[editable path="Levels/Level_03/export_single"]
+[editable path="Levels/Level_04/Level_04"]

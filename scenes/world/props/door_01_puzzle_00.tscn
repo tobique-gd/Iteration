@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://1bbrcj6snawk" path="res://assets/models/props/puzzles/puzzle_00/door_01/door_01.gd" id="2_hlods"]
 [ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="3_mrdxx"]
 [ext_resource type="Material" uid="uid://drigxrotncfh2" path="res://assets/materials/puzzle_emmisive.tres" id="4_6pibx"]
+[ext_resource type="AudioStream" uid="uid://dplig42oxk1oo" path="res://assets/audio/sfx/door_slide_open.ogg" id="5_hlods"]
+[ext_resource type="AudioStream" uid="uid://b3mi3wenfvd0x" path="res://assets/audio/sfx/activate.ogg" id="6_mrdxx"]
 
 [node name="Door_01_Puzzle_00" type="Node3D" unique_id=944798950 node_paths=PackedStringArray("animation_player", "door_pieces")]
 script = ExtResource("2_hlods")
@@ -28,5 +30,13 @@ surface_material_override/1 = ExtResource("4_6pibx")
 [node name="Puzzle_00_Door_01_mesh_011" parent="Puzzle_00_Door_01" index="3" unique_id=711003969]
 surface_material_override/0 = ExtResource("3_mrdxx")
 surface_material_override/1 = ExtResource("4_6pibx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1542000559]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -55)
+stream = ExtResource("5_hlods")
+
+[node name="Activate" type="AudioStreamPlayer" parent="." unique_id=806790722]
+stream = ExtResource("6_mrdxx")
+volume_db = -8.537
 
 [editable path="Puzzle_00_Door_01"]

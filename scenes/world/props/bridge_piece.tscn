@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://beqomujvko2gt"]
+
+[ext_resource type="PackedScene" uid="uid://c1urns5lmvlrq" path="res://assets/models/props/bridge/piece/bridge_piece.glb" id="1_8d6sn"]
+[ext_resource type="Script" uid="uid://dtw1vvtp5sdu5" path="res://scenes/world/props/bridge_piece.gd" id="1_ltb5f"]
+[ext_resource type="Material" uid="uid://c63vptg0kb5ns" path="res://assets/models/world/level_intro/ConcreteShortTiled.tres" id="2_tr6cb"]
+
+[node name="BridgePiece" type="Node3D" unique_id=949062312]
+script = ExtResource("1_ltb5f")
+
+[node name="BridgePiece" parent="." unique_id=270783635 instance=ExtResource("1_8d6sn")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="MoveBridge " parent="BridgePiece" index="0" unique_id=356668489]
+surface_material_override/0 = ExtResource("2_tr6cb")
+
+[editable path="BridgePiece"]

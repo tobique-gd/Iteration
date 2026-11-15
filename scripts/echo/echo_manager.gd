@@ -1,7 +1,7 @@
 
 extends Node
 
-const MAX_ECHOES: int = 3
+const MAX_ECHOES: int = 2
 
 const ECHO_SCENE: PackedScene = preload(
     "res://scenes/entities/echo/echo.tscn"

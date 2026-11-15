@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://clf1wokbqiy8i"]
 
 [ext_resource type="Script" uid="uid://cda46jepetqbb" path="res://scripts/echo/echo.gd" id="1_8jg1w"]
+[ext_resource type="Shader" uid="uid://cv1teumrfjd6q" path="res://scenes/entities/echo/hologram.gdshader" id="2_5olnu"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8jg1w"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5olnu"]
 radius = 0.3
-height = 1.5513672
+height = 1.4792969
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8jg1w"]
 radius = 0.3
@@ -13,6 +14,41 @@ height = 1.8
 [sub_resource type="BoxShape3D" id="BoxShape3D_8jg1w"]
 size = Vector3(1, 1, 0.87213135)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pinyi"]
+render_priority = 0
+shader = ExtResource("2_5olnu")
+shader_parameter/primary_color = Color(5.679429e-06, 0.5849248, 0.77439076, 1)
+shader_parameter/secondary_color = Color(0.079955734, 0.25888702, 0.29867777, 1)
+
+[sub_resource type="Curve" id="Curve_8jg1w"]
+_data = [Vector2(0, 0), 0.0, 8.267867, 0, 0, Vector2(0.26958525, 0.96189916), -0.0870302, -0.0870302, 0, 0, Vector2(1, 0), -2.492255, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5olnu"]
+curve = SubResource("Curve_8jg1w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8jg1w"]
+particle_flag_damping_as_friction = true
+emission_shape_scale = Vector3(0.5, 1.75, 0.5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -360.0
+angle_max = 360.00003
+angular_velocity_min = -4.400016
+angular_velocity_max = 9.799984
+gravity = Vector3(0, 0.02, 0)
+scale_min = 0.099999994
+scale_max = 0.14999999
+scale_curve = SubResource("CurveTexture_5olnu")
+turbulence_noise_strength = 0.1
+turbulence_influence_min = 0.143
+turbulence_influence_max = 0.186
+turbulence_initial_displacement_min = -38.1
+turbulence_initial_displacement_max = 15.200002
+
+[sub_resource type="BoxMesh" id="BoxMesh_5olnu"]
+size = Vector3(0.5, 0.5, 0.5)
+
 [node name="Echo" type="CharacterBody3D" unique_id=1797441509 node_paths=PackedStringArray("mesh", "ground_level", "interact_box")]
 collision_layer = 2
 script = ExtResource("1_8jg1w")
@@ -20,18 +56,19 @@ mesh = NodePath("Visuals")
 ground_level = NodePath("GroundLevel")
 interact_box = NodePath("Visuals/InteractBox")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=238906938]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0243163, 0)
-shape = SubResource("CapsuleShape3D_8jg1w")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1075288916]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0603514, 0)
+shape = SubResource("CapsuleShape3D_5olnu")
+
+[node name="GroundLevel" type="RayCast3D" parent="." unique_id=930441295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3414608, 0)
+target_position = Vector3(0, -0.6, 0)
+hit_from_inside = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2073472107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_8jg1w")
-
-[node name="GroundLevel" type="RayCast3D" parent="." unique_id=1370121927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24901155, 0)
-target_position = Vector3(0, -0.35, 0)
-hit_from_inside = true
 
 [node name="Visuals" type="Node3D" parent="." unique_id=1044288730]
 
@@ -42,3 +79,11 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Visuals/InteractBox" unique_id=1049781616]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9258277, -0.46942067)
 shape = SubResource("BoxShape3D_8jg1w")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1464007833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09712362, 0.6696373, -0.054075122)
+material_override = SubResource("ShaderMaterial_pinyi")
+amount = 100
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_8jg1w")
+draw_pass_1 = SubResource("BoxMesh_5olnu")

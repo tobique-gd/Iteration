@@ -1,0 +1,198 @@
+[gd_scene format=3 uid="uid://cgnkmyhmd58sq"]
+
+[ext_resource type="Script" uid="uid://c5fbmctjgomke" path="res://scenes/menu/main_menu/options.gd" id="1_3drd8"]
+[ext_resource type="AudioStream" uid="uid://xmjgcsu5kq7x" path="res://assets/audio/sfx/ui/JDSherbert - Ultimate UI SFX Pack - Select - 1.ogg" id="2_1rg7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rek8k"]
+
+[node name="Options" type="Control" unique_id=577436836 node_paths=PackedStringArray("master_volume", "music_volume", "sound_effects_volume", "fps_cap")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3drd8")
+master_volume = NodePath("MarginContainer/TabContainer/Audio/VBoxContainer/Master/MasterVolume")
+music_volume = NodePath("MarginContainer/TabContainer/Audio/VBoxContainer/Music/MusicVolume")
+sound_effects_volume = NodePath("MarginContainer/TabContainer/Audio/VBoxContainer/SFX/SoundEffectsVolume")
+fps_cap = NodePath("MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2/FPSCap")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=756499686]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 128
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer" unique_id=1878340829]
+layout_mode = 2
+current_tab = 2
+
+[node name="Game" type="MarginContainer" parent="MarginContainer/TabContainer" unique_id=1358081932]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Game" unique_id=158606620]
+layout_mode = 2
+
+[node name="ExitToMain" type="Button" parent="MarginContainer/TabContainer/Game/VBoxContainer" unique_id=223971274]
+layout_mode = 2
+text = "Exit To Main Menu"
+
+[node name="Video" type="MarginContainer" parent="MarginContainer/TabContainer" unique_id=1194565064]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Video" unique_id=1487295658]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabContainer/Video/VBoxContainer" unique_id=303468635]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer" unique_id=662233065]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Vsync"
+
+[node name="Vsync" type="CheckButton" parent="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer" unique_id=203751535]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/TabContainer/Video/VBoxContainer" unique_id=19798145]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2" unique_id=803135223]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "FPS Cap"
+
+[node name="FPSCap" type="OptionButton" parent="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2" unique_id=1428516439]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/h_separation = 16
+theme_override_font_sizes/font_size = 36
+alignment = 2
+selected = 8
+item_count = 11
+popup/item_0/text = "30"
+popup/item_0/id = 1
+popup/item_1/text = "60"
+popup/item_1/id = 2
+popup/item_2/text = "75"
+popup/item_2/id = 3
+popup/item_3/text = "100"
+popup/item_3/id = 4
+popup/item_4/text = "120"
+popup/item_4/id = 5
+popup/item_5/text = "144"
+popup/item_5/id = 6
+popup/item_6/text = "165"
+popup/item_6/id = 7
+popup/item_7/text = "200"
+popup/item_7/id = 8
+popup/item_8/text = "240"
+popup/item_8/id = 9
+popup/item_9/text = "360"
+popup/item_9/id = 10
+popup/item_10/text = "Unlimited"
+popup/item_10/id = 0
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/TabContainer" unique_id=50981123]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+metadata/_tab_index = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Audio" unique_id=879189844]
+layout_mode = 2
+
+[node name="Master" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=1252379589]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=1582132582]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Master Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=292854541]
+layout_mode = 2
+theme_override_constants/separation = 189
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="MasterVolume" type="HSlider" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Master" unique_id=116546162]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -40.0
+step = 0.01
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=22088154]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=2031868884]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Music Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=394407490]
+layout_mode = 2
+theme_override_constants/separation = 202
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="MusicVolume" type="HSlider" parent="MarginContainer/TabContainer/Audio/VBoxContainer/Music" unique_id=870701544]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = -40.0
+step = 0.01
+
+[node name="SFX" type="HBoxContainer" parent="MarginContainer/TabContainer/Audio/VBoxContainer" unique_id=723141835]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=774433653]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "Sound Effects Volume"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=1301841420]
+layout_mode = 2
+theme_override_constants/separation = 74
+theme_override_styles/separator = SubResource("StyleBoxEmpty_rek8k")
+
+[node name="SoundEffectsVolume" type="HSlider" parent="MarginContainer/TabContainer/Audio/VBoxContainer/SFX" unique_id=2079643972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Sfx" type="Node" parent="." unique_id=1834097153]
+
+[node name="Select" type="AudioStreamPlayer" parent="Sfx" unique_id=133485787]
+stream = ExtResource("2_1rg7h")
+bus = &"Sfx"
+
+[connection signal="tab_changed" from="MarginContainer/TabContainer" to="." method="_on_tab_container_tab_changed"]
+[connection signal="pressed" from="MarginContainer/TabContainer/Game/VBoxContainer/ExitToMain" to="." method="_on_exit_to_main_pressed"]
+[connection signal="toggled" from="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer/Vsync" to="." method="_on_vsync_toggled"]
+[connection signal="item_selected" from="MarginContainer/TabContainer/Video/VBoxContainer/HBoxContainer2/FPSCap" to="." method="_on_fps_cap_item_selected"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Audio/VBoxContainer/Master/MasterVolume" to="." method="_on_master_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Audio/VBoxContainer/Music/MusicVolume" to="." method="_on_music_volume_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabContainer/Audio/VBoxContainer/SFX/SoundEffectsVolume" to="." method="_on_sound_effects_volume_value_changed"]

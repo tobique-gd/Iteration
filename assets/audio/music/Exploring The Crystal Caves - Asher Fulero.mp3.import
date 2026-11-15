@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dlwdjq1ltdcq4"
+path="res://.godot/imported/Exploring The Crystal Caves - Asher Fulero.mp3-f25257376b4991c25f0a9029a1cb9e58.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Exploring The Crystal Caves - Asher Fulero.mp3"
+dest_files=["res://.godot/imported/Exploring The Crystal Caves - Asher Fulero.mp3-f25257376b4991c25f0a9029a1cb9e58.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -3,7 +3,11 @@ extends Node
 var soundtracks = {
 	"Amber": "uid://jg3oecwx2xi0",
 	"As You Prevent Do" : "uid://4l6q7oboohyg",
-	"On The Island" : "uid://bvl5kqe8xkct8"
+	"On The Island" : "uid://bvl5kqe8xkct8",
+	"Colony" : "uid://r2c23til1c0u",
+	"Exploring The Crystal Caves" : "uid://dlwdjq1ltdcq4",
+	"Lost At Sea" : "uid://d1ruci2km1fw3",
+	"Passing a Foreign Moon" : "uid://dffbatiu5u1lh"
 }
 
 const FADE_DURATION := 1.5
@@ -20,8 +24,7 @@ func _ready() -> void:
 		add_child(player)
 		players.append(player)
 
-
-func play_music(music_name: String) -> void:
+func play_music(music_name: String, from:float = 0.0) -> void:
 	if not soundtracks.has(music_name):
 		push_warning("not nown soundtrack: " + music_name)
 		return
@@ -38,7 +41,7 @@ func play_music(music_name: String) -> void:
 
 	next_player.stream = stream
 	next_player.volume_db = -80.0
-	next_player.play()
+	next_player.play(from)
 
 	var tween := create_tween().set_parallel(true)
 
@@ -59,3 +62,22 @@ func play_music(music_name: String) -> void:
 	tween.chain().tween_callback(current_player.stop)
 
 	active_player = next_player_index
+
+func set_volume(volume):
+	var tween := create_tween()
+	tween.tween_property(players[active_player], "volume_db", volume, FADE_DURATION)
+
+func stop(fade_duration: float = FADE_DURATION) -> void:
+	var current_player := players[active_player]
+
+	if not current_player.playing:
+		return
+
+	var tween := create_tween()
+	tween.tween_property(
+		current_player,
+		"volume_db",
+		-80.0,
+		fade_duration
+	)
+	tween.tween_callback(current_player.stop)

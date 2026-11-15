@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://c2kjjdtdkxety"]
+
+[ext_resource type="Script" uid="uid://3jl82uelpagx" path="res://scenes/world/props/door_02_level_01.gd" id="1_lxwde"]
+[ext_resource type="PackedScene" uid="uid://cxak34oiwbb10" path="res://assets/models/props/puzzles/puzzle_01/door_02/door_02_level_01.glb" id="1_yn2yv"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="2_lxwde"]
+[ext_resource type="Material" uid="uid://c63vptg0kb5ns" path="res://assets/models/world/level_intro/ConcreteShortTiled.tres" id="3_srvu0"]
+[ext_resource type="Material" uid="uid://drigxrotncfh2" path="res://assets/materials/puzzle_emmisive.tres" id="5_g5dti"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yn2yv"]
+size = Vector3(1.2, 14.434978, 2.9822567)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxwde"]
+size = Vector3(1.2, 14.434978, 2.9822567)
+
+[node name="Door_02_Level_01" type="Node3D" unique_id=1726654365 node_paths=PackedStringArray("animation_player", "door_pieces")]
+script = ExtResource("1_lxwde")
+animation_player = NodePath("Level_01_Door_02/AnimationPlayer")
+door_pieces = [NodePath("Level_01_Door_02/Door_03"), NodePath("Level_01_Door_02/Door_03_001")]
+
+[node name="Level_01_Door_02" parent="." unique_id=1094405396 instance=ExtResource("1_yn2yv")]
+
+[node name="Door_03" parent="Level_01_Door_02" index="0" unique_id=830291902]
+surface_material_override/0 = ExtResource("2_lxwde")
+surface_material_override/1 = ExtResource("3_srvu0")
+surface_material_override/2 = ExtResource("5_g5dti")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level_01_Door_02/Door_03" index="0" unique_id=251101660]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.051198, -1.4911283)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_01_Door_02/Door_03/StaticBody3D" unique_id=555147210]
+shape = SubResource("BoxShape3D_yn2yv")
+
+[node name="Door_03_001" parent="Level_01_Door_02" index="1" unique_id=482803636]
+instance_shader_parameters/emmision_strength = 0.0
+surface_material_override/0 = ExtResource("2_lxwde")
+surface_material_override/1 = ExtResource("3_srvu0")
+surface_material_override/2 = ExtResource("5_g5dti")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Level_01_Door_02/Door_03_001" index="0" unique_id=2105215442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.051198, 1.4911283)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level_01_Door_02/Door_03_001/StaticBody3D" unique_id=520182453]
+shape = SubResource("BoxShape3D_lxwde")
+
+[editable path="Level_01_Door_02"]

@@ -32,17 +32,20 @@ func _physics_process(delta: float) -> void:
 	if not is_recording:
 		return
 
-	recording_time += delta
-	sample_timer += delta
+	if recording_time >= max_recording_duration:
+		return
+
+	var remaining_time := max_recording_duration - recording_time
+	var frame_delta := minf(delta, remaining_time)
+
+	recording_time += frame_delta
+	sample_timer += frame_delta
 
 	var sample_interval := 1.0 / sample_rate
 
 	while sample_timer >= sample_interval:
 		sample_timer -= sample_interval
 		record_frame()
-
-	if recording_time >= max_recording_duration:
-		stop_recording()
 
 
 func start_recording() -> void:
@@ -77,9 +80,7 @@ func stop_recording() -> PlayerRecording:
 		return null
 
 	record_frame()
-
 	is_recording = false
-
 	current_recording.duration = recording_time
 
 	var completed_recording := current_recording
@@ -92,7 +93,6 @@ func stop_recording() -> PlayerRecording:
 		recordings.pop_front()
 
 	recordings.append(completed_recording)
-
 	recording_stopped.emit(completed_recording)
 
 	return completed_recording

@@ -20,7 +20,7 @@ func open() -> void:
 	await get_tree().create_timer(0.75).timeout
 
 	var tween = create_tween().set_parallel(true)
-
+	$Activate.play()
 	for p in door_pieces:
 		tween.tween_method(
 			func(value: float):
@@ -33,3 +33,4 @@ func open() -> void:
 	await tween.finished
 
 	animation_player.play("Puzzle_00_Door01Open")
+	$AudioStreamPlayer3D.play()

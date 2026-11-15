@@ -2,12 +2,14 @@ shader_type spatial;
 
 instance uniform vec3 emmision_color = vec3(1.0, 1.0, 1.0);
 instance uniform float emmision_strength = 0.0;
+instance uniform vec3 albedo_color = vec3(1.0, 1.0, 1.0);
 
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
+	ALBEDO = albedo_color;
 	EMISSION = emmision_color * emmision_strength;
 	
 }

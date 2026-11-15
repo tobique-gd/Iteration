@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://jxbf7um6xmvi"]
+
+[ext_resource type="Script" uid="uid://b6g85wpyg3jie" path="res://scenes/world/props/single_moving_platform.gd" id="1_7vr2c"]
+[ext_resource type="PackedScene" uid="uid://cbwo2byp34sgi" path="res://assets/models/props/puzzles/moving_single_platform.glb" id="1_taldh"]
+[ext_resource type="Material" uid="uid://cose651025u6t" path="res://assets/models/world/level_intro/WhiteConcreteTiled.tres" id="2_7vr2c"]
+
+[node name="SingleMovingPlatform" type="Node3D" unique_id=1254646724]
+script = ExtResource("1_7vr2c")
+
+[node name="export_single" parent="." unique_id=2076866316 instance=ExtResource("1_taldh")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="MovingRaisedPlatform " parent="export_single" index="0" unique_id=70257545]
+surface_material_override/0 = ExtResource("2_7vr2c")
+
+[editable path="export_single"]

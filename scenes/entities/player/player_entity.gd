@@ -3,7 +3,7 @@ class_name PlayerEntity
 
 const WALK_SPEED: float = 2.5
 const RUN_SPEED: float = 6.5
-const MAX_STAMINA: float = 150.0
+const MAX_STAMINA: float = 200.0
 
 enum States {
 	PLAY,
@@ -11,6 +11,7 @@ enum States {
 }
 
 var STATE = States.PLAY
+var first_recording = false
 
 @export_group("Movement")
 @export var snap_distance: float = 0.4
@@ -45,9 +46,18 @@ var stamina: float = MAX_STAMINA
 @export var ground_level: RayCast3D
 @export var animation_tree: AnimationTree
 @export var stamina_ui: Control
+@export var recording_ui: ColorRect
+
 @export var cam: Camera3D
 @export var interact_box: Area3D
 @export var cutscene_camera_intro: Camera3D
+@export var tether_particles: GPUParticles3D
+@export var gpu_rotate: Node3D
+@export var abberation_effect: ColorRect
+@export var white: ColorRect
+
+
+
 
 @export_group("Rotation")
 @export var rotation_speed: float = 16.0
@@ -67,9 +77,22 @@ var stamina: float = MAX_STAMINA
 @export var stamina_idle_delay: float = 4.0
 @export var stamina_fade_duration: float = 0.6
 
+@export_group("Recording")
+@export var recording_hold_time: float = 2.0
+
+var record_hold_timer: float = 0.0
+var record_button_held: bool = false
+var recording_hold_completed: bool = false
 
 @export_group("Audio")
 @export var jump_sfx: AudioStreamPlayer3D
+
+@export var max_aberration_spread: float = 0.2
+
+@export_group("Item Holding")
+@export var hold_spot: Node3D
+
+var held_item: Node3D = null
 
 var stamina_last_value: float = MAX_STAMINA
 var stamina_idle_timer: float = 0.0
@@ -90,12 +113,39 @@ var jump_buffer_timer: float = 0.0
 var sprinting: bool = false
 
 func _ready() -> void:
+	
 	if not is_echo():
-		#if STATE == States.PLAY:
-			#cam.current = true
-		WorldManager.activate_anchor(self)
+		add_to_group("player_entity")
+		WorldManager.activate_anchor(self, self)
 		RecordingManager.set_player(self)
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func hold_item(item: Node3D) -> bool:
+	if held_item != null:
+		return false
+
+	held_item = item
+	item.pick_up(hold_spot)
+
+	animation_tree.set("parameters/carry_item/blend_amount", 1.0)
+	return true
+
+
+func drop_held_item() -> void:
+	if held_item == null:
+		return
+
+	var item := held_item
+	held_item = null
+
+	item.drop_to_ground()
+	animation_tree.set("parameters/carry_item/blend_amount", 0.0)
+
+
+func clear_held_item() -> void:
+	held_item = null
+	animation_tree.set("parameters/carry_item/blend_amount", 0.0)
+
 
 func update_stamina_visibility(delta: float) -> void:
 	if not is_instance_valid(stamina_ui):
@@ -144,15 +194,13 @@ func is_echo() -> bool:
 	return false
 
 func _unhandled_input(event: InputEvent) -> void:
+	
 	if STATE != States.PLAY:
 		return
 	
 	if is_echo():
 		return
-
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
+	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -203,16 +251,75 @@ func handle_recording_input() -> void:
 	if is_echo():
 		return
 
-	if not Input.is_action_just_pressed("record"):
+	if not WorldManager.recall_unlocked:
 		return
 
 	if is_sacrificing:
 		return
 
-	if RecordingManager.is_recording:
-		sacrifice()
-	else:
-		RecordingManager.start_recording()
+	if Input.is_action_just_pressed("record"):
+		if not RecordingManager.is_recording:
+			if not first_recording:
+				SubtitleManager.show_text("Hold [icon:record:32] to stop recording and sacrifice.", 5.0)
+				first_recording = true
+			recording_ui.visible = true
+			RecordingManager.start_recording()
+			
+		else:
+			if RecordingManager.recording_time >= RecordingManager.max_recording_duration:
+				return
+
+			abberation_effect.visible = true
+			record_button_held = true
+			record_hold_timer = 0.0
+			recording_hold_completed = false
+			set_animation("sacrifice")
+
+	if record_button_held and Input.is_action_pressed("record"):
+		record_hold_timer += get_physics_process_delta_time()
+
+		var progress := clampf(record_hold_timer / recording_hold_time, 0.0, 1.0)
+		var spread := max_aberration_spread * pow(progress, 2.5)
+
+		white.modulate.a = progress
+		abberation_effect.material.set("shader_parameter/spread", spread)
+		gpu_rotate.rotation.y += spread * 200.0
+
+		if record_hold_timer >= recording_hold_time:
+			record_button_held = false
+			recording_hold_completed = true
+			recording_ui.set_instance_shader_parameter("progress", 1.0)
+			recording_ui.visible = false
+			reset_recording_effects()
+			sacrifice()
+
+	if Input.is_action_just_released("record"):
+		if record_button_held:
+			record_button_held = false
+			record_hold_timer = 0.0
+			reset_recording_effects()
+
+var effect_tween: Tween
+
+func reset_recording_effects() -> void:
+	if effect_tween and effect_tween.is_running():
+		effect_tween.kill()
+
+	effect_tween = create_tween()
+
+	effect_tween.tween_property(
+		abberation_effect.material,
+		"shader_parameter/spread",
+		0.0,
+		0.5
+	)
+
+	effect_tween.tween_property(
+		white,
+		"modulate:a",
+		0.0,
+		0.5
+	)
 
 func sacrifice() -> void:
 	if is_sacrificing:
@@ -222,11 +329,20 @@ func sacrifice() -> void:
 		return
 
 	is_sacrificing = true
+	
 
-	var recording = RecordingManager.stop_recording()
+	var recording := RecordingManager.stop_recording()
 
+	if recording == null:
+		is_sacrificing = false
+		return
+
+	drop_held_item()
 	velocity = Vector3.ZERO
+	
+	
 	WorldManager.respawn_player(self)
+	
 
 	EchoManager.begin_new_iteration(recording)
 
@@ -241,35 +357,105 @@ func get_player_input() -> PlayerInput:
 
 	return input
 
+
 func _process(delta: float) -> void:
-	if not is_instance_valid(stamina_ui) or not is_instance_valid(cam):
+	if not is_echo():
+		if RecordingManager.is_recording and WorldManager.recall_unlocked:
+			recording_ui.set_instance_shader_parameter(
+				"progress",
+				1.0 - RecordingManager.recording_time / RecordingManager.max_recording_duration
+			)
+
+			tether_particles.emitting = true
+
+			if WorldManager.has_anchor:
+				var target = WorldManager.current_anchor_transform.origin
+				var direction = target - gpu_rotate.global_position
+				direction.y = 0.0
+
+				if direction.length_squared() > 0.001:
+					gpu_rotate.look_at(
+						gpu_rotate.global_position + direction,
+						Vector3.UP
+					)
+		else:
+			tether_particles.emitting = false
+
+	if not is_instance_valid(stamina_ui):
 		return
-	
+
+	if not is_instance_valid(recording_ui):
+		return
+
+	if not is_instance_valid(cam):
+		return
+
 	var cam_right: Vector3 = cam.global_transform.basis.x
-	
 	cam_right.y = 0.0
 	cam_right = cam_right.normalized()
-	
-	var target_3d_pos: Vector3 = global_position + (cam_right * stamina_offset_3d.x) + (Vector3.UP * stamina_offset_3d.y)
-	
+
+	var target_3d_pos: Vector3 = (
+		global_position
+		+ cam_right * stamina_offset_3d.x
+		+ Vector3.UP * stamina_offset_3d.y
+	)
+
 	if cam.is_position_behind(target_3d_pos):
 		stamina_ui.hide()
+		recording_ui.hide()
 		return
-		
+
 	var screen_pos: Vector2 = cam.unproject_position(target_3d_pos)
-		
-	var target_pos = screen_pos - (stamina_ui.size / 2.0)
-	stamina_ui.global_position = lerp(stamina_ui.global_position, target_pos, 3.0 * delta)
+
+	var stamina_target: Vector2 = screen_pos - stamina_ui.size * 0.5
+	var recording_target: Vector2 = screen_pos - recording_ui.size * 0.5
+
+	var weight := 1.0 - exp(-12.0 * delta)
+
+	stamina_ui.position = stamina_ui.position.lerp(
+		stamina_target,
+		weight
+	)
+
+	recording_ui.position = recording_ui.position.lerp(
+		recording_target,
+		weight
+	)
+
 	stamina_ui.show()
+	if RecordingManager.is_recording:
+		recording_ui.show()
+	else:
+		recording_ui.hide()
 
-func handle_interact():
-	if get_interact_input():
-		for area in interact_box.get_overlapping_areas():
-			if not area.has_method("interact"):
-				return
-			
-			area.interact()
 
+func handle_interact() -> void:
+	if not get_interact_input():
+		return
+
+	var closest_component: InteractableComponent = null
+	var closest_distance := INF
+
+	for area in interact_box.get_overlapping_areas():
+		if not area is InteractableComponent:
+			continue
+
+		var component := area as InteractableComponent
+		var target := component.get_parent()
+
+		if target is PowerCube and target.is_held:
+			continue
+
+		var distance := global_position.distance_squared_to(
+			component.global_position
+		)
+
+		if distance < closest_distance:
+			closest_distance = distance
+			closest_component = component
+
+	if closest_component != null:
+		closest_component.interact()
 
 func enter_cutscene():
 	stamina_fade_tween = create_tween()
@@ -285,7 +471,30 @@ func enter_cutscene():
 func trigger_intro():
 	set_animation("intro_cutscene")
 
+func trigger_end():
+	enter_cutscene()
+	set_animation("end_cutscene")
+	var tween = create_tween()
+	tween.tween_property(self, "rotation_degrees:y", 0.0, 1.0)
 
+func reset_game():
+	get_tree().change_scene_to_file("res://scenes/game/game_manager.tscn")
+
+func start_emit_end():
+	$Visuals/TetherParticles2.emitting = true
+
+func end_emit_end():
+	$Visuals/TetherParticles2.emitting = false
+	
+
+func end_life():
+	var mat = $Visuals/metarig/Skeleton3D/Character.get_active_material(5)
+
+	var tween = create_tween()
+	tween.set_parallel(true)
+
+	tween.tween_property(mat, "emission_energy_multiplier", 0.0, 3.0)
+	tween.tween_property(mat, "albedo_color", Color.GRAY, 3.0)
 
 func exit_cutscene():
 	STATE = States.PLAY
@@ -540,6 +749,9 @@ func get_movement_direction() -> Vector3:
 
 func update_animation() -> void:
 	if not is_instance_valid(animation_tree):
+		return
+		
+	if record_button_held:
 		return
 
 	if not grounded and airtime >= fall_anim_delay:

@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bfui2ts8lv3ki"]
+
+[ext_resource type="Material" uid="uid://drigxrotncfh2" path="res://assets/materials/puzzle_emmisive.tres" id="1_484i1"]
+[ext_resource type="Script" uid="uid://bdqbrnk8t3o8q" path="res://scenes/world/props/power_cube.gd" id="2_0ibcq"]
+[ext_resource type="Script" uid="uid://cbytebj1w4wcd" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="3_0ibcq"]
+[ext_resource type="Script" uid="uid://bsncab15bwhy8" path="res://scenes/interaction/interactable_component.gd" id="3_w4d57"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_484i1"]
+size = Vector3(1, 2.02, 1)
+
+[sub_resource type="Texture2D" id="Texture2D_w4d57"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("3_0ibcq")
+path = "interact"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ibcq"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_484i1"]
+size = Vector3(0.35, 0.35, 0.35)
+
+[node name="PowerCube" type="RigidBody3D" unique_id=1320291442 node_paths=PackedStringArray("interactable_component")]
+script = ExtResource("2_0ibcq")
+rotation_speed = Vector3(0.17, 0.26, 0.22)
+interactable_component = NodePath("InteractableComponent")
+
+[node name="InteractableComponent" type="Area3D" parent="." unique_id=1446227355]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("3_w4d57")
+interact_prompt_radius = 0.0
+metadata/_custom_type_script = "uid://bsncab15bwhy8"
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractableComponent" unique_id=877643020]
+shape = SubResource("BoxShape3D_484i1")
+
+[node name="InteractPrompt" type="Sprite3D" parent="InteractableComponent" unique_id=928695862]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("Texture2D_w4d57")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2047616459]
+shape = SubResource("BoxShape3D_0ibcq")
+
+[node name="PowerCube2" type="MeshInstance3D" parent="." unique_id=1965310529]
+transform = Transform3D(0.9999949, 0, 0, 0, 1.0000057, 0, 0, 0, 1.00001, 0, 0, 0)
+material_override = ExtResource("1_484i1")
+instance_shader_parameters/albedo_color = Vector3(0.007, 0.054, 0.072)
+instance_shader_parameters/center_darkness = 1.129
+instance_shader_parameters/emission_color = Vector3(0.007, 0.054, 0.072)
+instance_shader_parameters/emission_strength = 100.0
+instance_shader_parameters/fade_radius = 0.33
+instance_shader_parameters/pulse_strength = 0.358
+mesh = SubResource("BoxMesh_484i1")

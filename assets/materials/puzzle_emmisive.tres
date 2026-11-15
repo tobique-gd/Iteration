@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://drigxrotncfh2"]
 
-[ext_resource type="Shader" uid="uid://bq6nd2nhhhmnu" path="res://scenes/world/puzzle_emmisive_surfaces.gdshader" id="1_4gcwp"]
+[ext_resource type="Shader" uid="uid://qlc2kwp8p7j1" path="res://scenes/world/props/power_cube.gdshader" id="1_4gcwp"]
 
 [resource]
 render_priority = 0

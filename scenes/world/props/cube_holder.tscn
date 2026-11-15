@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://due7r7ejjplp6"]
+
+[ext_resource type="PackedScene" uid="uid://qaq6u8uo41bo" path="res://assets/models/props/puzzles/cube_holder.glb" id="1_nydon"]
+[ext_resource type="Script" uid="uid://d4bbhn2qvl6xa" path="res://scenes/world/props/pedestal.gd" id="1_pttfx"]
+[ext_resource type="Material" uid="uid://dv5syvy628fql" path="res://assets/models/world/level_intro/ConcreteTiled.tres" id="2_fqcs2"]
+[ext_resource type="Material" uid="uid://bamhdlc1q4ev4" path="res://assets/models/world/level_intro/BlueConcrete.tres" id="3_tmaid"]
+[ext_resource type="Material" uid="uid://c5stkp5owg2fn" path="res://assets/materials/Marble.tres" id="4_oe6iq"]
+[ext_resource type="PackedScene" uid="uid://no8ujn50akao" path="res://scenes/interaction/interactable_component.tscn" id="5_fqcs2"]
+[ext_resource type="Script" uid="uid://cbytebj1w4wcd" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="6_tmaid"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fqcs2"]
+
+[sub_resource type="Texture2D" id="Texture2D_oe6iq"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("6_tmaid")
+path = "interact"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tmaid"]
+height = 0.54375
+
+[node name="CubeHolder" type="Node3D" unique_id=152295284 node_paths=PackedStringArray("interactable_component", "cube_holder")]
+script = ExtResource("1_pttfx")
+interactable_component = NodePath("InteractableComponent")
+cube_holder = NodePath("Node3D")
+
+[node name="export_single" parent="." unique_id=2120220743 instance=ExtResource("1_nydon")]
+
+[node name="CubeHolder" parent="export_single" index="0" unique_id=193978394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_fqcs2")
+surface_material_override/1 = ExtResource("3_tmaid")
+surface_material_override/2 = ExtResource("4_oe6iq")
+
+[node name="InteractableComponent" parent="." unique_id=351763631 instance=ExtResource("5_fqcs2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+interact_prompt_offset = Vector3(0, 0.55, 0)
+interact_prompt_radius = 0.0
+
+[node name="InteractCollisionShape" type="CollisionShape3D" parent="InteractableComponent" unique_id=772147840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29999998, 0)
+shape = SubResource("BoxShape3D_fqcs2")
+
+[node name="InteractPrompt" type="Sprite3D" parent="InteractableComponent" unique_id=1993537791]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.55, 0)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = SubResource("Texture2D_oe6iq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=18925117]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1306240616]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22187507, 0)
+shape = SubResource("CylinderShape3D_tmaid")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=354704820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+
+[editable path="export_single"]

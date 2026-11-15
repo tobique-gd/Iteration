@@ -8,7 +8,3 @@ func show_movement_tutorial_text():
 
 func play_door_close_animation():
 	intro_level_animation_player.play("DoorOpen")
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		cutscenes.advance(36.0)
